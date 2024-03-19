@@ -7,7 +7,7 @@ public class BuilderPatternTests
   [TestMethod]
   public void Build()
   {
-    var build = new ObjectWithAPIs.Builder()
+    var build = new Service.Builder()
       .WithPrimaryAPI(new SecondAPI())
       .WithSecondaryAPI(new FirstAPI())
       .Build();
@@ -18,9 +18,9 @@ public class BuilderPatternTests
 
   [TestMethod]
   [ExpectedException(typeof(ArgumentException))]
-  public void Build_Exception()
+  public void Build_ArgumentException()
   {
-    new ObjectWithAPIs.Builder()
+    new Service.Builder()
       .WithSecondaryAPI(new FirstAPI())
       .Build();
   }

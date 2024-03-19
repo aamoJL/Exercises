@@ -5,21 +5,19 @@ internal class Program
   static void Main(string[] args)
   {
     // With constructor
-    new ObjectWithAPIs(new FirstAPI(), new SecondAPI()).Log();
+    Console.WriteLine($"With Constructor: {new Service(new FirstAPI(), new SecondAPI())}");
 
     // With builder pattern
-    new ObjectWithAPIs.Builder()
+    Console.WriteLine($"With Builder Pattern: {new Service.Builder()
       .WithPrimaryAPI(new FirstAPI())
       .WithSecondaryAPI(new SecondAPI())
-      .Build()
-      .Log();
+      .Build()}");
 
     // With builder pattern inside a try-catch. Can be used to throw exceptions if the properties are not right
     try
     {
-      new ObjectWithAPIs.Builder()
-        .Build()
-        .Log();
+      Console.WriteLine($"With Builder Pattern: {new Service.Builder()
+        .Build()}");
     }
     catch (Exception e)
     {
@@ -28,35 +26,35 @@ internal class Program
 
     // With properties. Can be used to make constructor parameter list smaller if the parameters are not required
     // Properties needs to have public setters / initializers
-    new ObjectWithAPIs()
+    Console.WriteLine($"With Properties: {new Service()
     {
       PrimaryAPI = new FirstAPI(),
       SecondaryAPI = new SecondAPI(),
-    }.Log();
+    }}");
   }
 
   /* Console logs:
-    FirstAPI : SecondAPI
-    FirstAPI : SecondAPI
-    APIs can't be null
-    FirstAPI : SecondAPI
+   * With Constructor: FirstAPI : SecondAPI
+   * With Builder Pattern: FirstAPI : SecondAPI
+   * APIs can't be null (Parameter 'PrimaryAPI')
+   * With Properties: FirstAPI : SecondAPI
    */
 }
 
-public class ObjectWithAPIs
+public class Service
 {
   public IAPI PrimaryAPI { get; init; } = new FirstAPI();
   public IAPI SecondaryAPI { get; init; } = new SecondAPI();
 
-  public ObjectWithAPIs() { }
+  public Service() { }
 
-  public ObjectWithAPIs(IAPI primaryAPI, IAPI secondaryAPI)
+  public Service(IAPI primaryAPI, IAPI secondaryAPI)
   {
     PrimaryAPI = primaryAPI;
     SecondaryAPI = secondaryAPI;
   }
 
-  public void Log() => Console.WriteLine($"{PrimaryAPI.GetName()} : {SecondaryAPI.GetName()}");
+  public override string ToString() => $"{PrimaryAPI.GetName()} : {SecondaryAPI.GetName()}";
 
   public class Builder
   {
@@ -75,7 +73,7 @@ public class ObjectWithAPIs
       return this;
     }
 
-    public ObjectWithAPIs Build()
+    public Service Build()
     {
       if (PrimaryAPI == null) throw new ArgumentException("APIs can't be null", nameof(PrimaryAPI));
       if (SecondaryAPI == null) throw new ArgumentException("APIs can't be null", nameof(SecondaryAPI));
