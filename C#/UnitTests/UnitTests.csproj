@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BuilderPattern\BuilderPattern.csproj" />
     <ProjectReference Include="..\FactoryMethodPattern\FactoryMethodPattern.csproj" />
+    <ProjectReference Include="..\SingletonPattern\SingletonPattern.csproj" />
   </ItemGroup>
 
   <ItemGroup>
