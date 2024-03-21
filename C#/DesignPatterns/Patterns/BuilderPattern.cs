@@ -1,8 +1,9 @@
-﻿namespace BuilderPattern;
-
-internal class Program
+﻿namespace DesignPatterns.Patterns;
+public class BuilderPattern : IRunnable
 {
-  static void Main(string[] args)
+  public string Name => "Builder Pattern";
+
+  public void Run()
   {
     // With constructor
     Console.WriteLine($"With Constructor: {new Service(new FirstAPI(), new SecondAPI())}");

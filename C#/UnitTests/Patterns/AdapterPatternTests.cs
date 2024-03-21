@@ -1,6 +1,6 @@
-﻿using AdapterPattern;
+﻿using static DesignPatterns.Patterns.AdapterPattern;
 
-namespace UnitTests;
+namespace UnitTests.Patterns;
 [TestClass]
 public class AdapterPatternTests
 {

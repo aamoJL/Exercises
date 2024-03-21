@@ -1,6 +1,6 @@
-﻿using FactoryMethodPattern;
+﻿using static DesignPatterns.Patterns.FactoryMethodPattern;
 
-namespace UnitTests;
+namespace UnitTests.Patterns;
 [TestClass]
 public class FactoryMethodPatternTests
 {

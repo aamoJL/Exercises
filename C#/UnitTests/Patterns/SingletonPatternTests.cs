@@ -1,6 +1,6 @@
-﻿using SingletonPattern;
+﻿using static DesignPatterns.Patterns.SingletonPattern;
 
-namespace UnitTests;
+namespace UnitTests.Patterns;
 [TestClass]
 public class SingletonPatternTests
 {

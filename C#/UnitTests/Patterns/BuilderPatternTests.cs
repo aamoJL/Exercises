@@ -1,6 +1,6 @@
-﻿using BuilderPattern;
+﻿using DesignPatterns.Patterns;
 
-namespace UnitTests;
+namespace UnitTests.Patterns;
 [TestClass]
 public class BuilderPatternTests
 {
