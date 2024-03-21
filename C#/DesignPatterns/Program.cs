@@ -1,7 +1,6 @@
 ﻿using DesignPatterns.Patterns;
 
 namespace DesignPatterns;
-
 internal class Program
 {
   static void Main(string[] args)
@@ -28,6 +27,7 @@ internal class Program
     new BuilderPattern(),
     new FactoryMethodPattern(),
     new SingletonPattern(),
+    new DecoratorPattern(),
   ];
 }
 

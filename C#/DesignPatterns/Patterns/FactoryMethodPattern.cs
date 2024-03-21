@@ -1,7 +1,7 @@
 ﻿namespace DesignPatterns.Patterns;
 public class FactoryMethodPattern : IRunnable
 {
-  public string Name => "Factory Pattern";
+  public string Name => "Factory Method Pattern";
 
   public void Run()
   {
