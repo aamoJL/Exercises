@@ -28,6 +28,7 @@ internal class Program
     new FactoryMethodPattern(),
     new SingletonPattern(),
     new DecoratorPattern(),
+    new FacadePattern(),
   ];
 }
 
