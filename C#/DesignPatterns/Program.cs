@@ -3,32 +3,63 @@
 namespace DesignPatterns;
 internal class Program
 {
+  public static int SelectionStartingLine = 2;
+
   static void Main(string[] args)
   {
-    Console.WriteLine($"Select pattern:");
+    var run = false;
+    var selection = 0;
+
+    Console.WriteLine($"Select pattern:\n");
     for (var i = 0; i < _runnables.Length; i++)
     {
-      Console.WriteLine($"{i + 1}: {_runnables[i].Name}");
+      Console.WriteLine($"\t{_runnables[i].Name}");
     }
 
-    Console.Write("Selection: ");
+    Console.CursorVisible = false;
+    SelectMenuItem(selection);
 
-    if (Console.ReadLine() is string input
-      && int.TryParse(input, out var selection)
-      && selection > 0 && _runnables.Length > selection - 1)
+    do
     {
-      Console.Clear();
-      _runnables[selection - 1].Run();
-    }
+      switch (Console.ReadKey(true).Key)
+      {
+        case ConsoleKey.DownArrow:
+          DeselectMenuItem(selection);
+          SelectMenuItem(selection = selection != _runnables.Length - 1 ? selection + 1 : 0); break;
+        case ConsoleKey.UpArrow:
+          DeselectMenuItem(selection);
+          SelectMenuItem(selection = selection != 0 ? selection - 1 : _runnables.Length - 1); break;
+        case ConsoleKey.Enter: run = true; break;
+        default: break;
+      }
+    } while (!run);
+
+    Console.Clear();
+    _runnables[selection].Run();
+  }
+
+  private static void DeselectMenuItem(int index)
+  {
+    Console.SetCursorPosition(0, index + SelectionStartingLine);
+    Console.Write("   "); // Remove arrow
+    Console.Write($"\t{_runnables[index].Name}");
+  }
+
+  private static void SelectMenuItem(int index)
+  {
+    Console.SetCursorPosition(0, index + SelectionStartingLine);
+    Console.Write($"\t{_runnables[index].Name}");
+    Console.CursorLeft = 0;
+    Console.Write("-->");
   }
 
   public static IRunnable[] _runnables = [
     new AdapterPattern(),
     new BuilderPattern(),
-    new FactoryMethodPattern(),
-    new SingletonPattern(),
     new DecoratorPattern(),
     new FacadePattern(),
+    new FactoryMethodPattern(),
+    new SingletonPattern(),
   ];
 }
 

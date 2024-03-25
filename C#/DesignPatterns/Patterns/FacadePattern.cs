@@ -3,7 +3,12 @@ public class FacadePattern : IRunnable
 {
   public string Name => "Facade Pattern";
 
-  public void Run() => new OrderFacade(new EmailService(), new PaymentService()).MakeOrder(10f);
+  public void Run()
+  {
+    Console.WriteLine(Name + "\n");
+
+    new OrderFacade(new EmailService(), new PaymentService()).MakeOrder(10f);
+  }
 
   public class OrderFacade(EmailService emailService, PaymentService paymentService)
   {

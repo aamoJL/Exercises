@@ -5,6 +5,8 @@ public class FactoryMethodPattern : IRunnable
 
   public void Run()
   {
+    Console.WriteLine(Name + "\n");
+
     Console.WriteLine(new Repository(new OfflineDatabaseFactory("filename.db")).Database);
     Console.WriteLine(new Repository(new OnlineDatabaseFactory("connection")).Database);
 

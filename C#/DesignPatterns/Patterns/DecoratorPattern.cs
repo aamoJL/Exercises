@@ -5,6 +5,8 @@ public class DecoratorPattern : IRunnable
 
   public void Run()
   {
+    Console.WriteLine(Name + "\n");
+
     ICalculator calculator = new Calculator(initValue: 0);
     Console.WriteLine(calculator.Calculate().ToString());
 

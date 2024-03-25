@@ -5,6 +5,8 @@ public class SingletonPattern : IRunnable
 
   public void Run()
   {
+    Console.WriteLine(Name + "\n");
+
     Console.WriteLine(SingletonService.Instance.Name);
 
     // SingletonService

@@ -7,6 +7,8 @@ public class AdapterPattern : IRunnable
 
   public void Run()
   {
+    Console.WriteLine(Name + "\n");
+
     var colorGenerator = new ColorGenerator(); // Only generates RGB colors
     var paintProducer = new PaintProducer(); // Only takes HSL colors
     var adapter = new PaintProducerRGBAdapter(paintProducer); // Adapter to use RGB on the producer
