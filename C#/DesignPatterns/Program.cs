@@ -59,6 +59,7 @@ internal class Program
     new DecoratorPattern(),
     new FacadePattern(),
     new FactoryMethodPattern(),
+    new FlyweightPattern(),
     new SingletonPattern(),
   ];
 }
