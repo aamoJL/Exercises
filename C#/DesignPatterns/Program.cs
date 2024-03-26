@@ -64,6 +64,7 @@ internal class Program
   public static IRunnable[] _runnables = [
     new AdapterPattern(),
     new BuilderPattern(),
+    new ChainOfResponsibilityPattern(),
     new DecoratorPattern(),
     new FacadePattern(),
     new FactoryMethodPattern(),
