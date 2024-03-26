@@ -11,6 +11,9 @@ internal class Program
     var selection = 0;
 
     Console.WriteLine($"Select pattern:\n");
+    
+    SelectionStartingLine = Console.CursorTop;
+    
     for (var i = 0; i < _runnables.Length; i++)
     {
       Console.WriteLine($"\t{_runnables[i].Name}");
@@ -36,6 +39,11 @@ internal class Program
 
     Console.Clear();
     _runnables[selection].Run();
+
+    Console.Write("\nPress any key to exit.");
+    Console.ReadKey(true);
+
+    Environment.Exit(0);
   }
 
   private static void DeselectMenuItem(int index)
@@ -60,6 +68,7 @@ internal class Program
     new FacadePattern(),
     new FactoryMethodPattern(),
     new FlyweightPattern(),
+    new ProxyPattern(),
     new SingletonPattern(),
   ];
 }
