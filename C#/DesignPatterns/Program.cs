@@ -70,6 +70,7 @@ internal class Program
     new FacadePattern(),
     new FactoryMethodPattern(),
     new FlyweightPattern(),
+    new IteratorPattern(),
     new ProxyPattern(),
     new SingletonPattern(),
   ];
