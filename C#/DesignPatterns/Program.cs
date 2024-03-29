@@ -71,6 +71,7 @@ internal class Program
     new FactoryMethodPattern(),
     new FlyweightPattern(),
     new IteratorPattern(),
+    new ObserverPattern(),
     new ProxyPattern(),
     new SingletonPattern(),
   ];
