@@ -75,6 +75,7 @@ internal class Program
     new ProxyPattern(),
     new SingletonPattern(),
     new StatePattern(),
+    new StrategyPattern(),
   ];
 }
 
