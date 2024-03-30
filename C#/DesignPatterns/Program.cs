@@ -74,6 +74,7 @@ internal class Program
     new ObserverPattern(),
     new ProxyPattern(),
     new SingletonPattern(),
+    new StatePattern(),
   ];
 }
 
