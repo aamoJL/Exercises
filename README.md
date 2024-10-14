@@ -1,1 +1,1 @@
-# ExerciseConsoleApplication
+Programming exercises
