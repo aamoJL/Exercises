@@ -1,7 +1,7 @@
 ﻿namespace Algorithms;
 
 /// <summary>
-/// Linear search algorithm.
+/// Search algorithm for unsorted array.
 /// </summary>
 /// Big O: O(n)
 public static class LinearSearch
