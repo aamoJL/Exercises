@@ -3,7 +3,7 @@
 /// <summary>
 /// Search algorithm for sorted array
 /// </summary>
-/// Big O: O(log(n))
+/// Performance: O(log(n))
 public static class BinarySearch
 {
   /// <summary>

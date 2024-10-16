@@ -3,7 +3,7 @@
 /// <summary>
 /// Search algorithm for unsorted array.
 /// </summary>
-/// Big O: O(n)
+/// Performance: O(n)
 public static class LinearSearch
 {
   /// <summary>
