@@ -1,6 +1,6 @@
-﻿using Algorithms;
+﻿using Algorithms.Algorithms.Search;
 
-namespace UnitTests;
+namespace UnitTests.Algorithms.Search;
 
 [TestClass]
 public class LinearSearchTests

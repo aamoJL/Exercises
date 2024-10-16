@@ -1,4 +1,4 @@
-﻿namespace Algorithms.Algorithms.Problems;
+﻿namespace Algorithms.Algorithms.Search.Problems;
 
 /// <summary>
 /// Problem: Find the breaking point of a crystal ball using two balls.

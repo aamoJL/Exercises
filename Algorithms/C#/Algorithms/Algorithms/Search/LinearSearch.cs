@@ -1,4 +1,4 @@
-﻿namespace Algorithms;
+﻿namespace Algorithms.Algorithms.Search;
 
 /// <summary>
 /// Search algorithm for unsorted array.

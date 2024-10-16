@@ -1,4 +1,4 @@
-﻿namespace Algorithms.Algorithms;
+﻿namespace Algorithms.Algorithms.Search;
 
 /// <summary>
 /// Search algorithm for sorted array
