@@ -1,6 +1,6 @@
 ﻿using Algorithms.Algorithms.Search.Problems;
 
-namespace UnitTests.Algorithms.Search.Problems;
+namespace UnitTests.AlgorithmTests.SearchTests.ProblemTests;
 
 [TestClass]
 public class TwoCrystalBallsTests

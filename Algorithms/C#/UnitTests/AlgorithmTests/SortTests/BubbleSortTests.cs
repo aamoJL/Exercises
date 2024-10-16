@@ -1,6 +1,6 @@
 ﻿using Algorithms.Algorithms.Sort;
 
-namespace UnitTests.Algorithms.Sort;
+namespace UnitTests.AlgorithmTests.SortTests;
 
 [TestClass]
 public class BubbleSortTests

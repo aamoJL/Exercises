@@ -1,6 +1,6 @@
 ﻿using Algorithms.Algorithms.Search;
 
-namespace UnitTests.Algorithms.Search;
+namespace UnitTests.AlgorithmTests.SearchTests;
 
 [TestClass]
 public class LinearSearchTests
