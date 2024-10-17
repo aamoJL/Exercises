@@ -58,7 +58,7 @@ public class LinkedList<T>() : ILinkedList<T>
     for (var i = 0; i < index; i++)
       node = node?.Next;
 
-    return node == null ? default : node.Value;
+    return node == null ? throw new NullReferenceException() : node.Value;
   }
 
   public void InsertAt(int index, T item)

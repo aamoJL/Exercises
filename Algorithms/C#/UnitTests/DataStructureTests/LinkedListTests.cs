@@ -36,12 +36,12 @@ public class LinkedListTests
     Assert.AreEqual(1, result);
   }
 
-  [TestMethod, ExpectedException(typeof(IndexOutOfRangeException))]
+  [TestMethod]
   public void Get_NotFound_ExceptionThrown()
   {
     var list = new Algorithms.DataStructures.LinkedList<int>([1, 2, 3]);
 
-    list.Get(3);
+    Assert.ThrowsException<IndexOutOfRangeException>(() => list.Get(3));
   }
 
   [TestMethod]
@@ -68,12 +68,12 @@ public class LinkedListTests
     Assert.AreEqual(1, list.Get(0));
   }
 
-  [TestMethod, ExpectedException(typeof(IndexOutOfRangeException))]
+  [TestMethod]
   public void InsertAt_OutOfRange_ExceptionThrown()
   {
     var list = new Algorithms.DataStructures.LinkedList<int>();
 
-    list.InsertAt(index: 1, item: 2);
+    Assert.ThrowsException<IndexOutOfRangeException>(() => list.InsertAt(index: 1, item: 2));
   }
 
   [TestMethod]
@@ -180,12 +180,12 @@ public class LinkedListTests
     Assert.AreEqual(0, list.Count);
   }
 
-  [TestMethod, ExpectedException(typeof(IndexOutOfRangeException))]
+  [TestMethod]
   public void RemoveAt_OutOfRange_ExceptionThrown()
   {
-    var list = new Algorithms.DataStructures.LinkedList<int>([]);
+    var list = new Algorithms.DataStructures.LinkedList<int>();
 
-    list.RemoveAt(0);
+    Assert.ThrowsException<IndexOutOfRangeException>(() => list.RemoveAt(0));
   }
 
   [TestMethod]
