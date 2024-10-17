@@ -34,7 +34,7 @@ public class Queue<T>() : IQueue<T>
   public T? Dequeue()
   {
     if (HeadNode == null)
-      throw new InvalidOperationException("Head should not be null");
+      throw new InvalidOperationException();
 
     var node = HeadNode;
     var value = node.Value;
@@ -72,5 +72,5 @@ public class Queue<T>() : IQueue<T>
   /// Returns the value of the first item without removing it.
   /// </summary>
   /// <exception cref="InvalidOperationException"></exception>
-  public T? Peek() => HeadNode != null ? HeadNode.Value : throw new InvalidOperationException("Head should not be null");
+  public T? Peek() => HeadNode != null ? HeadNode.Value : throw new InvalidOperationException();
 }
