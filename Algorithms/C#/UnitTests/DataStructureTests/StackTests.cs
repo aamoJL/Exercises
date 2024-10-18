@@ -78,4 +78,42 @@ public class StackTests
 
     Assert.ThrowsException<InvalidOperationException>(() => list.Pop());
   }
+
+  [TestMethod]
+  public void ToArray_FirstIsFirst()
+  {
+    var array = new int[] { 4, 6, 2 };
+    var list = new Algorithms.DataStructures.Stack<int>(array);
+
+    var result = list.ToArray(Algorithms.DataStructures.Stack<int>.ArrayOrder.FirstIsFirst);
+
+    CollectionAssert.AreEqual(array.Reverse().ToArray(), result);
+  }
+
+  [TestMethod]
+  public void ToArray_LastIsFirst()
+  {
+    var array = new int[] { 4, 6, 2 };
+    var list = new Algorithms.DataStructures.Stack<int>(array);
+
+    var result = list.ToArray(Algorithms.DataStructures.Stack<int>.ArrayOrder.LastIsFirst);
+
+    CollectionAssert.AreEqual(array, result);
+  }
+
+  [TestMethod]
+  public void Contains_True()
+  {
+    var list = new Algorithms.DataStructures.Stack<int>([1, 2, 3]);
+
+    Assert.IsTrue(list.Contains(2));
+  }
+
+  [TestMethod]
+  public void Contains_False()
+  {
+    var list = new Algorithms.DataStructures.Stack<int>([1, 2, 3]);
+
+    Assert.IsFalse(list.Contains(4));
+  }
 }

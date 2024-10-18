@@ -31,6 +31,9 @@ public class LinkedList<T>() : ILinkedList<T>
 
   public int Count { get; private set; } = 0;
 
+  /// <summary>
+  /// Adds item at the end of the list.
+  /// </summary>
   public void Append(T item)
   {
     var newNode = new Node(item);
@@ -85,6 +88,9 @@ public class LinkedList<T>() : ILinkedList<T>
     }
   }
 
+  /// <summary>
+  /// Adds item at the start of the list.
+  /// </summary>
   public void Prepend(T item)
   {
     var newNode = new Node(item);
