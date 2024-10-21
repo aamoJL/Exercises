@@ -9,10 +9,11 @@ public class BubbleSortTests
   public void Sort_Sorted()
   {
     var array = new int[] { 1, 3, 7, 4, 1, 2 };
+    var expected = new int[] { 1, 1, 2, 3, 4, 7 };
 
     BubbleSort.Sort(array);
 
-    CollectionAssert.AreEqual(new int[] { 1, 1, 2, 3, 4, 7 }, array);
+    CollectionAssert.AreEqual(expected, array);
   }
 
   [TestMethod]
@@ -27,10 +28,11 @@ public class BubbleSortTests
   public void SortOptimized_Sorted()
   {
     var array = new int[] { 1, 3, 7, 4, 1, 2 };
+    var expected = new int[] { 1, 1, 2, 3, 4, 7 };
 
     BubbleSort.SortOptimized(array);
 
-    CollectionAssert.AreEqual(new int[] { 1, 1, 2, 3, 4, 7 }, array);
+    CollectionAssert.AreEqual(expected, array);
   }
 
   [TestMethod]
