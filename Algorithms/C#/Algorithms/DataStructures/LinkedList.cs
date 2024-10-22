@@ -82,6 +82,7 @@ public class LinkedList<T>() : ILinkedList<T>
 
       if (leftNode != null)
         leftNode.Next = newNode;
+
       newNode.Next = rightNode;
 
       Count++;

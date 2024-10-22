@@ -73,4 +73,18 @@ public class Queue<T>() : IQueue<T>
   /// </summary>
   /// <exception cref="InvalidOperationException"></exception>
   public T? Peek() => HeadNode != null ? HeadNode.Value : throw new InvalidOperationException();
+
+  public T?[] ToArray()
+  {
+    var array = new T?[Count];
+    var node = HeadNode;
+
+    for (var i = 0; i < Count; i++)
+    {
+      array[i] = node != null ? node.Value : default;
+      node = node?.Next;
+    }
+
+    return array;
+  }
 }

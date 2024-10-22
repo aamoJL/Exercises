@@ -108,4 +108,15 @@ public class QueueTests
 
     Assert.AreEqual(3, list.Count);
   }
+
+  [TestMethod]
+  public void ToArray_ItemsInOrder()
+  {
+    var array = new int[] { 1, 5, 7, 3, 4, 6 };
+    var list = new Algorithms.DataStructures.Queue<int>(array);
+
+    var result = list.ToArray();
+
+    CollectionAssert.AreEqual(array, result);
+  }
 }
