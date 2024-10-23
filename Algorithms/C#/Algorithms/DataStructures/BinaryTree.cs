@@ -4,12 +4,14 @@ public abstract class BinaryTree
 {
   public enum TraversalStrategy
   {
-    /// <summary>Value -> Left -> Right</summary>
+    /// <summary>From top, root before left leaf</summary>
     PreOrder,
-    /// <summary>Left -> Value -> Right</summary>
+    /// <summary>From botttom, left leaf before root</summary>
     InOrder,
-    /// <summary>Left -> Right -> Value</summary>
-    PostOrder
+    /// <summary>From bottom, left and right leaves before root</summary>
+    PostOrder,
+    /// <summary>From top, roots level by level</summary>
+    BreadthFirst,
   }
 }
 
@@ -37,6 +39,7 @@ public class BinaryTree<T>() : BinaryTree
       TraversalStrategy.PreOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
       TraversalStrategy.InOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
       TraversalStrategy.PostOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.BreadthFirst => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
       _ => throw new NotImplementedException(),
     };
   }
@@ -62,6 +65,20 @@ public class BinaryTree<T>() : BinaryTree
         ToArrayTraversal(root.Left, items, strategy);
         ToArrayTraversal(root.Right, items, strategy);
         items.Enqueue(root.Value);
+        break;
+      case TraversalStrategy.BreadthFirst:
+        var queue = new Queue<Node?>([root]);
+
+        while (queue.Count > 0)
+        {
+          if (queue.Dequeue() is not Node node)
+            continue;
+
+          items.Enqueue(node.Value);
+
+          queue.Enqueue(node.Left);
+          queue.Enqueue(node.Right);
+        }
         break;
     }
 
