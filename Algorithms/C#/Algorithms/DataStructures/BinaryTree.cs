@@ -13,6 +13,24 @@ public abstract class BinaryTree
     /// <summary>From top, roots level by level</summary>
     BreadthFirst,
   }
+
+  /// <summary>
+  /// Compares two binary trees structurally.
+  /// </summary>
+  /// <returns><see langword="true"/> if the trees are structurally equal, and has the same values; otherwise <see langword="false"/></returns>
+  public static bool Compare<T>(BinaryTree<T>.Node? rootA, BinaryTree<T>.Node? rootB)
+  {
+    if (rootA == null && rootB == null)
+      return true;
+
+    if (rootA == null || rootB == null)
+      return false;
+
+    if (!Equals(rootA.Value, rootB.Value))
+      return false;
+
+    return Compare(rootA?.Left, rootB?.Left) && Compare(rootA?.Right, rootB?.Right);
+  }
 }
 
 /// <summary>
