@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="CSS-Exercises" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>CSS-Exercises</title>
+  </head>
+  <body>
+    <div class="flex row wrap gap">
+      <div id="chat" class="cell">
+        <link rel="stylesheet" href="Chat/chat.css" />
+        <script src="Chat/chat.js"></script>
+        <h2 class="cell-title">Chat</h2>
+        <div class="container flex col">
+          <div class="messages-container flex">
+            <div id="messages" class="messages flex col gap">
+              <template id="chat-message-template">
+                <div class="message">
+                  <div class="avatar">
+                    <div class="icon">{user}</div>
+                  </div>
+                  <div class="text-container">
+                    <p class="text">{text}</p>
+                    <p class="date">{date}</p>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+          <div>
+            <form id="message-inputs" class="inputs flex">
+              <input class="message-input flex" id="message-text" type="text" placeholder="Send a message..." autocomplete="off" />
+              <button class="submit-btn" type="submit">Send</button>
+            </form>
+            <div id="typing-notification" class="typing-notification">{user} is typing...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
