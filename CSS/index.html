@@ -8,6 +8,16 @@
   </head>
   <body>
     <div class="flex row wrap gap">
+      <div id="card-rotation" class="cell">
+        <link rel="stylesheet" href="CardRotation/cardRotation.css" />
+        <script src="CardRotation/cardRotation.js"></script>
+        <h2 class="cell-title">Card rotation</h2>
+        <div class="container flex items-center">
+          <div class="flex trading-card">
+            <img class="card-image" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
+          </div>
+        </div>
+      </div>
       <div id="nameplate" class="cell">
         <link rel="stylesheet" href="Nameplate/nameplate.css" />
         <script src="Nameplate/nameplate.js"></script>
@@ -31,7 +41,7 @@
         <h2 class="cell-title">Chat</h2>
         <div class="container flex col">
           <div class="messages-container flex">
-            <div id="messages" class="messages flex col gap">
+            <div class="messages flex col gap" id="messages">
               <template id="chat-message-template">
                 <div class="message">
                   <div class="avatar">
