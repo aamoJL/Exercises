@@ -39,6 +39,28 @@ public class QuickSortTests
   }
 
   [TestMethod]
+  public void Sort_Reverse_Sorted()
+  {
+    var array = new int[] { 7, 6, 5, 4, 3, 2, 1 };
+    var expected = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+
+    QuickSort.Sort(array);
+
+    CollectionAssert.AreEqual(expected, array);
+  }
+
+  [TestMethod]
+  public void Sort_Half_Sorted()
+  {
+    var array = new int[] { 1, 1, 1, 2, 2, 2 };
+    var expected = new int[] { 1, 1, 1, 2, 2, 2 };
+
+    QuickSort.Sort(array);
+
+    CollectionAssert.AreEqual(expected, array);
+  }
+
+  [TestMethod]
   public void Sort_Sorted_Sorted()
   {
     var array = new int[] { 1, 2, 3, 4, 5, 6 };
