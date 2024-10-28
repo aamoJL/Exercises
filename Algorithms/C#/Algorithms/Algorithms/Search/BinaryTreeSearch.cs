@@ -4,10 +4,10 @@ namespace Algorithms.Algorithms.Search;
 
 public static class BinaryTreeSearch
 {
-  public static bool Exists<T>(BinaryTree<T> tree, T value)
-    => Traversal(tree.Root, value);
+  public static bool Exists<T>(BinaryTreeNode<T> tree, T value)
+    => Traversal(tree, value);
 
-  private static bool Traversal<T>(BinaryTree<T>.Node? root, T value)
+  private static bool Traversal<T>(BinaryTreeNode<T>? root, T value)
   {
     if (root == null)
       return false;

@@ -18,7 +18,7 @@ public abstract class BinaryTree
   /// Compares two binary trees structurally.
   /// </summary>
   /// <returns><see langword="true"/> if the trees are structurally equal, and has the same values; otherwise <see langword="false"/></returns>
-  public static bool Compare<T>(BinaryTree<T>.Node? rootA, BinaryTree<T>.Node? rootB)
+  public static bool Compare<T>(BinaryTreeNode<T>? rootA, BinaryTreeNode<T>? rootB)
   {
     if (rootA == null && rootB == null)
       return true;
@@ -36,33 +36,25 @@ public abstract class BinaryTree
 /// <summary>
 /// Tree structure with two leaves per node
 /// </summary>
-public class BinaryTree<T>() : BinaryTree
+public class BinaryTreeNode<T>(T value) : BinaryTree
 {
-  public class Node(T value, Node? left = null, Node? right = null)
-  {
-    public T Value { get; set; } = value;
-    public Node? Left { get; set; } = left;
-    public Node? Right { get; set; } = right;
-  }
-
-  public BinaryTree(Node root) : this()
-    => Root = root;
-
-  public Node? Root { get; set; }
+  public T Value { get; set; } = value;
+  public BinaryTreeNode<T>? Left { get; set; }
+  public BinaryTreeNode<T>? Right { get; set; }
 
   public T?[] ToArray(TraversalStrategy strategy)
   {
     return strategy switch
     {
-      TraversalStrategy.PreOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.InOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.PostOrder => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.BreadthFirst => ToArrayTraversal(Root, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.PreOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.InOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.PostOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.BreadthFirst => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
       _ => throw new NotImplementedException(),
     };
   }
 
-  private static Queue<T> ToArrayTraversal(Node? root, Queue<T> items, TraversalStrategy strategy)
+  private static Queue<T> ToArrayTraversal(BinaryTreeNode<T>? root, Queue<T> items, TraversalStrategy strategy)
   {
     if (root == null)
       return items;
@@ -85,11 +77,11 @@ public class BinaryTree<T>() : BinaryTree
         items.Enqueue(root.Value);
         break;
       case TraversalStrategy.BreadthFirst:
-        var queue = new Queue<Node?>([root]);
+        var queue = new Queue<BinaryTreeNode<T>?>([root]);
 
         while (queue.Count > 0)
         {
-          if (queue.Dequeue() is not Node node)
+          if (queue.Dequeue() is not BinaryTreeNode<T> node)
             continue;
 
           items.Enqueue(node.Value);
