@@ -23,6 +23,7 @@
 | | | | |
 |-|-|-|-|
 | [Stack](Algorithms/C%23/Algorithms/DataStructures/Stack.cs) | [Queue](Algorithms/C%23/Algorithms/DataStructures/Queue.cs) | [Linked List](Algorithms/C%23/Algorithms/DataStructures/LinkedList.cs) | [Binary Tree](Algorithms/C%23/Algorithms/DataStructures/BinaryTree.cs) |
+| [Binary Heap](Algorithms/C%23/Algorithms/DataStructures/BinaryHeap.cs) | | | |
 
 # Design Patterns
 
