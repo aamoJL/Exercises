@@ -1,0 +1,40 @@
+#card-flip .container {
+  .trading-card {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    height: 80%;
+
+    img {
+      height: 100%;
+      -webkit-user-drag: none;
+      border-radius: 12px;
+
+      &.front {
+        transform: rotateY(0deg);
+        transition: transform 0.3s linear;
+        backface-visibility: hidden;
+      }
+
+      &.back {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: rotateY(180deg);
+        transition: transform 0.3s linear;
+        z-index: -1;
+      }
+    }
+
+    &.flipped {
+      img {
+        &.back {
+          transform: rotateY(0deg);
+        }
+        &.front {
+          transform: rotateY(-180deg);
+        }
+      }
+    }
+  }
+}
