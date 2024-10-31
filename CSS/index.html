@@ -8,6 +8,45 @@
   </head>
   <body>
     <div class="flex row wrap gap">
+      <div id="avatar-status" class="cell">
+        <link rel="stylesheet" href="Avatar/avatar.css" />
+        <h2 class="cell-title">Avatar Status</h2>
+        <div class="container bg-primary flex">
+          <div class="flex col grow-0 justify-evenly">
+            <div class="flex row items-center gap">
+              <div class="avatar online">
+                <div class="icon">
+                  <img src="Avatar/avatar.jpg" alt="JL" />
+                </div>
+              </div>
+              <div>Online</div>
+            </div>
+            <div class="flex row items-center gap">
+              <div class="avatar away">
+                <div class="icon"> JL </div>
+              </div>
+              <div>Away</div>
+            </div>
+            <div class="flex row items-center gap">
+              <div class="avatar busy">
+                <div class="icon"> JL </div>
+              </div>
+              <div>Busy</div>
+            </div>
+            <div class="flex row items-center gap">
+              <div class="avatar speaking">
+                <div class="icon">
+                  <img src="Avatar/avatar.jpg" alt="JL" />
+                </div>
+              </div>
+              <div>
+                <div>Speaking</div>
+                <div class="font-xs">(hover over)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="card-flip" class="cell">
         <link rel="stylesheet" href="CardFlip/cardFlip.css" />
         <script src="CardFlip/cardFlip.js"></script>
@@ -35,9 +74,9 @@
         <h2 class="cell-title">Nameplate</h2>
         <div class="container flex row gap self-center" id="nameplate-container">
           <div class="avatar online">
-            <div class="icon">JL</div>
+            <div class="icon bg-secondary">JL</div>
           </div>
-          <div>
+          <div class="flex col self-center">
             <div class="name">Joni Laukka</div>
             <div class="hover-status" id="hover-status">
               <div>Online</div>
@@ -68,7 +107,7 @@
           </div>
           <div>
             <form id="message-inputs" class="inputs flex">
-              <input class="message-input flex" id="message-text" type="text" placeholder="Send a message..." autocomplete="off" />
+              <input class="message-input flex flex-1" id="message-text" type="text" placeholder="Send a message..." autocomplete="off" />
               <button class="submit-btn" type="submit">Send</button>
             </form>
             <div id="typing-notification" class="typing-notification">{user} is typing...</div>

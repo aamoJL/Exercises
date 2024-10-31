@@ -13,7 +13,6 @@ body {
 
 .flex {
   display: flex;
-  flex: 1;
 
   &.row {
     flex-direction: row;
@@ -31,6 +30,10 @@ body {
     gap: 10px;
   }
 
+  &.gap-2 {
+    gap: 20px;
+  }
+
   &.items-center {
     align-items: center;
   }
@@ -38,6 +41,18 @@ body {
   &.self-center {
     align-self: center;
   }
+
+  &.justify-evenly {
+    justify-content: space-evenly;
+  }
+
+  &.grow-0 {
+    flex-grow: 0;
+  }
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .hidden {
@@ -74,46 +89,18 @@ body {
   }
 }
 
-.avatar {
-  position: relative;
-  width: 40px;
-  height: 40px;
+.border-secondary {
+  border: var(--color2) 1px solid;
+}
 
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color5);
-    font-weight: bold;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    user-select: none;
-    border: 1px solid;
-    border-color: var(--color2);
-  }
+.bg-primary {
+  background-color: var(--color1);
+}
 
-  &:is(.online, .away) .icon {
-    -webkit-mask-image: radial-gradient(circle at 35px 35px, #0000 8px, #000 0);
-    /* Compatibility */
-    mask-image: none;
-  }
+.bg-secondary {
+  background-color: var(--color5);
+}
 
-  &:is(.online, .away):after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 25%;
-    width: 25%;
-    border-radius: 50%;
-  }
-
-  &.online:after {
-    background-color: green;
-  }
-
-  &.away:after {
-    background-color: orange;
-  }
+.font-xs {
+  font-size: x-small;
 }
