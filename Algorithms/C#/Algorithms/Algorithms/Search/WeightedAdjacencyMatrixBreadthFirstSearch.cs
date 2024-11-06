@@ -24,7 +24,7 @@ public static class WeightedAdjacencyMatrixBreadthFirstSearch
   /// <summary>
   /// Returns path between <paramref name="from"/> and <paramref name="to"/> nodes
   /// </summary>
-  /// <returns>Array of node indexes or empty array if no path was found</returns>
+  /// <returns>Array of nodes or empty array if no path was found</returns>
   /// <exception cref="ArgumentOutOfRangeException"></exception>
   public static int[] GetPath(int[][] graph, int from, int to)
   {

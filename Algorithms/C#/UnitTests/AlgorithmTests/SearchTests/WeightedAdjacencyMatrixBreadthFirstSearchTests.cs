@@ -101,7 +101,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
       [0, 1, 1, 0],
     };
 
-    // 4 -> 0
+    // -1 -> 0
     Assert.ThrowsException<ArgumentOutOfRangeException>(
       () => WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, -1, 0));
   }
