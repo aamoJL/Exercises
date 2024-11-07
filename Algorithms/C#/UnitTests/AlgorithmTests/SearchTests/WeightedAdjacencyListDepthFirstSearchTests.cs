@@ -18,8 +18,9 @@ public class WeightedAdjacencyListDepthFirstSearchTests
       [new(1), new(2)]
     };
 
-    var validPaths = new int[][]
+    var validPaths = new uint[][]
     {
+      [0],
       [0, 1], [0, 3, 2], [0, 3],
       [2, 0],
       [3, 2, 0], [3, 1], [3, 2],
@@ -47,7 +48,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     };
 
     // 0 -> 4
-    var expected = Array.Empty<int>();
+    var expected = Array.Empty<uint>();
     var actual = WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 0, 4);
 
     CollectionAssert.AreEqual(expected, actual);
@@ -67,7 +68,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     };
 
     // 1 -> 3
-    var expected = Array.Empty<int>();
+    var expected = Array.Empty<uint>();
     var actual = WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 1, 3);
 
     CollectionAssert.AreEqual(expected, actual);
@@ -89,23 +90,5 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     // 4 -> 0
     Assert.ThrowsException<ArgumentOutOfRangeException>(
       () => WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 4, 0));
-  }
-
-  [TestMethod]
-  public void GetPath_Negative_ExceptionThrown()
-  {
-    /// 0 → 1
-    /// ↑ ↘ ↑
-    /// 2 ← 3
-    var graph = new WeightedAdjacencyListDepthFirstSearch.Connection[][] {
-      [new(1), new(3)],
-      [],
-      [new(0)],
-      [new(2), new(1)]
-    };
-
-    // -1 -> 0
-    Assert.ThrowsException<ArgumentOutOfRangeException>(
-      () => WeightedAdjacencyListDepthFirstSearch.GetPath(graph, -1, 0));
   }
 }

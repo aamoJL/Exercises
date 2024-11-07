@@ -2,27 +2,26 @@
 
 public static class WeightedAdjacencyListDepthFirstSearch
 {
-  public record class Connection(int To, int Weight = 1);
+  public record class Connection(uint To, int Weight = 1);
 
   /// <summary>
   /// Returns path between <paramref name="from"/> and <paramref name="to"/> nodes.
   /// </summary>
   /// <param name="graph">List of node connection lists</param>
   /// <exception cref="ArgumentOutOfRangeException"></exception>
-  public static int[] GetPath(Connection[][] graph, int from, int to)
+  public static uint[] GetPath(Connection[][] graph, uint from, uint to)
   {
     var seen = new bool[graph.Length];
-    var path = new DataStructures.Stack<int>();
+    var path = new DataStructures.Stack<uint>();
 
     Traversal(graph, from, to, seen, path);
 
-    return path.ToArray(DataStructures.Stack<int>.ArrayOrder.LastIsFirst);
+    return path.ToArray(DataStructures.Stack<uint>.ArrayOrder.LastIsFirst);
   }
 
-  private static bool Traversal(Connection[][] graph, int current, int target, bool[] seen, DataStructures.Stack<int> path)
+  private static bool Traversal(Connection[][] graph, uint current, uint target, bool[] seen, DataStructures.Stack<uint> path)
   {
-    ArgumentOutOfRangeException.ThrowIfLessThan(current, 0);
-    ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(current, graph.Length);
+    ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(current, (uint)graph.Length);
 
     if (seen[current])
       return false;
