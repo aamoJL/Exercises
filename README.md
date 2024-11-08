@@ -1,22 +1,22 @@
 # Algorithms
 
-### Search algorithms
-| Array | Tree |
-|-|-|
-| [Binary Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinarySearch.cs) | [BinaryTree Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinaryTreeSearch.cs) |
-| [Linear Search](Algorithms/C%23/Algorithms/Algorithms/Search/LinearSearch.cs) | [BinarySearchTree Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinarySearchTreeSearch.cs) | 
+### Search Algorithms
+| Array | Tree | Graph |
+|-|-|-|
+| [Binary Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinarySearch.cs) | [Binary Tree Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinaryTreeSearch.cs) | [Adjacency Matrix Search](Algorithms/C%23/Algorithms/Algorithms/Search/WeightedAdjacencyMatrixBreadthFirstSearch.cs) |
+| [Linear Search](Algorithms/C%23/Algorithms/Algorithms/Search/LinearSearch.cs) | [Binary Search Tree Search](Algorithms/C%23/Algorithms/Algorithms/Search/BinarySearchTreeSearch.cs) | [Adjacency List Search](Algorithms/C%23/Algorithms/Algorithms/Search/WeightedAdjacencyListDepthFirstSearch.cs) |
 
-### Sorting algorithms
+### Sorting Algorithms
 | Array |
 |-|
 | [Bubble Sort](Algorithms/C%23/Algorithms/Algorithms/Sort/BubbleSort.cs) |
 | [Quick Sort](Algorithms/C%23/Algorithms/Algorithms/Sort/QuickSort.cs) |
 
-### Pathfinding algorithms
+### Pathfinding Algorithms
 
-| Grid |
-|-|
-| [Basic Grid Pathfinder](Algorithms/C%23/Algorithms/Algorithms/PathFinding/BasicGridPathFinder.cs) |
+| Grid | Graph |
+|-|-|
+| [Basic Grid Pathfinder](Algorithms/C%23/Algorithms/Algorithms/PathFinding/BasicGridPathFinder.cs) | [Dijkstra's Shortest Path](Algorithms/C%23/Algorithms/Algorithms/PathFinding/DijkstrasPathFinder.cs) |
 
 # Data Structures
 
@@ -33,6 +33,6 @@
 | [Facade](DesignPatterns/C%23/DesignPatterns/Patterns/FacadePattern.cs) | [Factory Method](DesignPatterns/C%23/DesignPatterns/Patterns/FactoryMethodPattern.cs) | [Flyweight](DesignPatterns/C%23/DesignPatterns/Patterns/FlyweightPattern.cs) | [Iterator](DesignPatterns/C%23/DesignPatterns/Patterns/IteratorPattern.cs) | [Observer](DesignPatterns/C%23/DesignPatterns/Patterns/ObserverPattern.cs) |
 | [Proxy](DesignPatterns/C%23/DesignPatterns/Patterns/ProxyPattern.cs) | [Singleton](DesignPatterns/C%23/DesignPatterns/Patterns/SingletonPattern.cs) | [State](DesignPatterns/C%23/DesignPatterns/Patterns/StatePattern.cs) | [Strategy](DesignPatterns/C%23/DesignPatterns/Patterns/StrategyPattern.cs) |
 
-# CSS
+# CSS / Javascript
 
 [CSS Exercises page](https://aamojl.github.io/Exercises/CSS/index.html)
