@@ -1,4 +1,6 @@
-﻿namespace UnitTests.DataStructureTests;
+﻿using Algorithms.DataStructures;
+
+namespace UnitTests.DataStructureTests;
 
 [TestClass]
 public class LinkedListTests
@@ -9,10 +11,21 @@ public class LinkedListTests
     var array = new int[] { 1, 2, 3 };
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    for (var i = 0; i < array.Length; i++)
-      Assert.AreEqual(array[i], list.Get(i));
-
     Assert.AreEqual(array.Length, list.Count);
+
+    CollectionAssert.AreEqual(array, list.ToArray());
+    CollectionAssert.AreEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
+  }
+
+  [TestMethod]
+  public void GetReversedList_ListReturned()
+  {
+    var array = new int[] { 1, 2, 3 };
+    var list = new Algorithms.DataStructures.LinkedList<int>(array);
+
+    var reversedList = list.GetReversedList();
+
+    CollectionAssert.AreEqual(array.Reverse().ToArray(), reversedList.ToArray());
   }
 
   [TestMethod]
@@ -22,18 +35,21 @@ public class LinkedListTests
 
     list.Append(3);
 
+    var expected = new int[] { 1, 2, 3 };
+
     Assert.AreEqual(3, list.Count);
-    Assert.AreEqual(3, list.Get(2));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
   public void Get_Found_ItemReturned()
   {
-    var list = new Algorithms.DataStructures.LinkedList<int>([1, 2, 3]);
+    var array = new int[] { 1, 2, 3 };
+    var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    var result = list.Get(0);
-
-    Assert.AreEqual(1, result);
+    for (var i = 0; i < list.Count; i++)
+      Assert.AreEqual(array[i], list.Get(i));
   }
 
   [TestMethod]
@@ -51,10 +67,11 @@ public class LinkedListTests
 
     list.InsertAt(index: 1, item: 4);
 
+    var expected = new int[] { 1, 4, 2, 3 };
+
     Assert.AreEqual(4, list.Count);
-    Assert.AreEqual(1, list.Get(0));
-    Assert.AreEqual(4, list.Get(1));
-    Assert.AreEqual(2, list.Get(2));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -64,8 +81,10 @@ public class LinkedListTests
 
     list.InsertAt(index: 0, item: 1);
 
+    var expected = new int[] { 1 };
+
     Assert.AreEqual(1, list.Count);
-    Assert.AreEqual(1, list.Get(0));
+    CollectionAssert.AreEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -83,47 +102,56 @@ public class LinkedListTests
 
     list.Prepend(0);
 
+    var expected = new int[] { 0, 1, 2 };
+
     Assert.AreEqual(3, list.Count);
-    Assert.AreEqual(0, list.Get(0));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
   public void Remove_First_ItemRemoved()
   {
     var array = new int[] { 0, 1, 2 };
-    var item = array[0];
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    list.Remove(item);
+    list.Remove(array[0]);
+
+    var expected = new int[] { 1, 2 };
 
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(1, list.Get(0));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
   public void Remove_Middle_ItemRemoved()
   {
     var array = new int[] { 0, 1, 2 };
-    var item = array[1];
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    list.Remove(item);
+    list.Remove(array[1]);
+
+    var expected = new int[] { 0, 2 };
 
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(2, list.Get(1));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
   public void Remove_Last_ItemRemoved()
   {
     var array = new int[] { 0, 1, 2 };
-    var item = array[2];
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    list.Remove(item);
+    list.Remove(array[2]);
+
+    var expected = new int[] { 0, 1 };
 
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(1, list.Get(1));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -141,9 +169,11 @@ public class LinkedListTests
 
     list.RemoveAt(0);
 
+    var expected = new int[] { 2, 3 };
+
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(2, list.Get(0));
-    Assert.AreEqual(3, list.Get(1));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -153,9 +183,11 @@ public class LinkedListTests
 
     list.RemoveAt(1);
 
+    var expected = new int[] { 1, 3 };
+
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(1, list.Get(0));
-    Assert.AreEqual(3, list.Get(1));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -165,9 +197,11 @@ public class LinkedListTests
 
     list.RemoveAt(2);
 
+    var expected = new int[] { 1, 2 };
+
     Assert.AreEqual(2, list.Count);
-    Assert.AreEqual(1, list.Get(0));
-    Assert.AreEqual(2, list.Get(1));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -177,7 +211,10 @@ public class LinkedListTests
 
     list.RemoveAt(0);
 
+    var expected = Array.Empty<int>();
+
     Assert.AreEqual(0, list.Count);
+    CollectionAssert.AreEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -196,8 +233,10 @@ public class LinkedListTests
     list.RemoveAt(0);
     list.Append(4);
 
+    var expected = new int[] { 4 };
+
     Assert.AreEqual(1, list.Count);
-    Assert.AreEqual(4, list.Get(0));
+    CollectionAssert.AreEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -208,7 +247,28 @@ public class LinkedListTests
     list.RemoveAt(0);
     list.Prepend(4);
 
+    var expected = new int[] { 4 };
+
     Assert.AreEqual(1, list.Count);
-    Assert.AreEqual(4, list.Get(0));
+    CollectionAssert.AreEqual(expected, list.ToArray());
+  }
+
+  [TestMethod]
+  public void ToArray_Empty_EmptyArrayReturned()
+  {
+    var array = Array.Empty<int>();
+    var list = new Algorithms.DataStructures.LinkedList<int>(array);
+
+    CollectionAssert.AreEqual(array, list.ToArray());
+  }
+
+  [TestMethod]
+  public void ToArray_HasItems_ArrayReturned()
+  {
+    var array = new int[] { 4, 5, 2, 3, 5, 1 };
+    var list = new Algorithms.DataStructures.LinkedList<int>(array);
+
+    CollectionAssert.AreEqual(array, list.ToArray());
+    CollectionAssert.AreEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 }

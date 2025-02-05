@@ -1,6 +1,8 @@
-﻿namespace Algorithms.DataStructures;
+﻿using System.Collections;
 
-public interface ILinkedList<T>
+namespace Algorithms.DataStructures;
+
+public interface ILinkedList<T> : IEnumerable<T>
 {
   public int Count { get; }
 
@@ -14,10 +16,53 @@ public interface ILinkedList<T>
 
 public class LinkedList<T>() : ILinkedList<T>
 {
-  private class Node(T? value)
+  public class Node(T value)
   {
-    public T? Value { get; } = value;
+    public T Value { get; } = value;
     public Node? Next { get; set; }
+    public Node? Previous { get; set; }
+  }
+
+  public class LinkedListEnumerator(Node? headNode) : IEnumerator<T>
+  {
+    private Node? HeadNode { get; } = headNode;
+    private Node? CurrentNode { get; set; } = null;
+
+    private bool Started { get; set; } = false;
+
+    public T Current
+    {
+      get
+      {
+        if (CurrentNode == null)
+          throw new InvalidOperationException("Current node is null");
+
+        return CurrentNode.Value;
+      }
+    }
+
+    public bool MoveNext()
+    {
+      if (Started)
+        CurrentNode = CurrentNode?.Next;
+      else
+      {
+        CurrentNode = HeadNode;
+        Started = true;
+      }
+
+      return CurrentNode != null;
+    }
+
+    public void Reset()
+    {
+      CurrentNode = null;
+      Started = false;
+    }
+
+    public void Dispose() => GC.SuppressFinalize(this);
+
+    object? IEnumerator.Current => Current;
   }
 
   public LinkedList(T[] items) : this()
@@ -26,8 +71,8 @@ public class LinkedList<T>() : ILinkedList<T>
       Append(item);
   }
 
-  private Node? HeadNode { get; set; }
-  private Node? TailNode { get; set; }
+  public Node? HeadNode { get; protected set; }
+  public Node? TailNode { get; protected set; }
 
   public int Count { get; private set; } = 0;
 
@@ -42,9 +87,8 @@ public class LinkedList<T>() : ILinkedList<T>
       HeadNode = TailNode = newNode;
     else
     {
-
       // Set new node as the tail node
-      TailNode.Next = newNode;
+      LinkNodes(TailNode, newNode);
       TailNode = newNode;
     }
 
@@ -81,9 +125,10 @@ public class LinkedList<T>() : ILinkedList<T>
       var rightNode = leftNode?.Next;
 
       if (leftNode != null)
-        leftNode.Next = newNode;
+        LinkNodes(leftNode, newNode);
 
-      newNode.Next = rightNode;
+      if (rightNode != null)
+        LinkNodes(newNode, rightNode);
 
       Count++;
     }
@@ -101,7 +146,7 @@ public class LinkedList<T>() : ILinkedList<T>
     else
     {
       // Set new node as the head node
-      newNode.Next = HeadNode;
+      LinkNodes(newNode, HeadNode);
       HeadNode = newNode;
     }
 
@@ -110,49 +155,29 @@ public class LinkedList<T>() : ILinkedList<T>
 
   public void Remove(T item)
   {
-    if (item == null) return;
-
-    Node? lastNode = null;
     var currentNode = HeadNode;
 
-    for (var i = 0; i < Count; i++)
+    do
     {
       if (currentNode?.Value?.Equals(item) == true)
       {
-        // Item found
+        if (currentNode == HeadNode)
+          HeadNode = currentNode.Next;
 
-        var nextNode = currentNode?.Next;
+        if (currentNode == TailNode)
+          TailNode = currentNode.Previous;
 
-        if (lastNode == null)
-        {
-          // Current node is head node
-          HeadNode = nextNode;
-        }
+        LinkNodes(currentNode.Previous, currentNode.Next);
 
-        if (nextNode == null)
-        {
-          // current node is tail node
-          if (lastNode != null)
-            lastNode.Next = null;
-
-          TailNode = lastNode;
-        }
-        else
-        {
-          if (lastNode != null)
-            lastNode.Next = nextNode;
-
-          currentNode!.Next = null;
-        }
+        currentNode.Next = null;
+        currentNode.Previous = null;
 
         Count--;
 
         break;
       }
-
-      lastNode = currentNode;
-      currentNode = lastNode?.Next;
     }
+    while ((currentNode = currentNode?.Next) != null);
   }
 
   public void RemoveAt(int index)
@@ -160,30 +185,23 @@ public class LinkedList<T>() : ILinkedList<T>
     if (index >= Count)
       throw new IndexOutOfRangeException();
 
-    var lastNode = index > 0 ? GetNode(index - 1) : null;
-    var currentNode = lastNode?.Next ?? HeadNode;
+    var currentNode = GetNode(index) ?? throw new NullReferenceException("Node is null");
 
     if (currentNode == HeadNode)
-    {
-      HeadNode = currentNode?.Next;
-      currentNode!.Next = null;
-
-      if (HeadNode == null)
-        TailNode = null;
-    }
+      HeadNode = currentNode.Next;
 
     if (currentNode == TailNode)
-      TailNode = lastNode;
+      TailNode = currentNode.Previous;
 
-    if (lastNode != null)
-      lastNode.Next = currentNode!.Next;
+    LinkNodes(currentNode.Previous, currentNode.Next);
 
-    currentNode!.Next = null;
+    currentNode.Previous = null;
+    currentNode.Next = null;
 
     Count--;
   }
 
-  private Node? GetNode(int index)
+  protected Node? GetNode(int index)
   {
     if (index >= Count)
       throw new IndexOutOfRangeException();
@@ -194,5 +212,39 @@ public class LinkedList<T>() : ILinkedList<T>
       node = node?.Next;
 
     return node;
+  }
+
+  protected static void LinkNodes(Node? left, Node? right)
+  {
+    if (left != null)
+      left.Next = right;
+
+    if (right != null)
+      right.Previous = left;
+  }
+
+  public IEnumerator<T> GetEnumerator() => new LinkedListEnumerator(HeadNode);
+
+  IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+}
+
+public static class LinkedListExtensions
+{
+  public static LinkedList<T> GetReversedList<T>(this LinkedList<T> self)
+  {
+    var reversedValues = new T[self.Count];
+    var currentNode = self.TailNode;
+
+    for (var i = 0; i < self.Count; i++)
+    {
+      if (currentNode == null)
+        break;
+
+      reversedValues[i] = currentNode.Value;
+
+      currentNode = currentNode.Previous;
+    }
+
+    return new(reversedValues);
   }
 }
