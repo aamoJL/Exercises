@@ -18,7 +18,7 @@ public class LinkedList<T>() : ILinkedList<T>
 {
   public class Node(T value)
   {
-    public T Value { get; } = value;
+    public T Value { get; set; } = value;
     public Node? Next { get; set; }
     public Node? Previous { get; set; }
   }
