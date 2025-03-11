@@ -1,4 +1,4 @@
-#spoiler-text {
+#spoiler-text > div {
   line-height: 1.4em;
   
   *.spoiler {

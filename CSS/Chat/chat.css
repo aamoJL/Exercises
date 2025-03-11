@@ -1,4 +1,4 @@
-#chat .container {
+#chat > div {
   border-radius: 5px;
   background-color: var(--color1);
 

@@ -4,29 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="CSS-Exercises" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
     <title>CSS-Exercises</title>
+    
+    <template id="cell-container-template">
+      <link rel="stylesheet" href="style.css" />
+      <h2 id="title" class="cell-title"></h2>
+      <div class="container">
+        <slot></slot>
+      </div>
+    </template>
   </head>
   <body>
-    <div class="flex row wrap gap">
-      <div id="spoiler-text" class="cell">
+    <div class="row wrap gap-2">
+      <cell-container id="spoiler-text" title="Spoiler Text">
         <link rel="stylesheet" href="SpoilerText/spoilerText.css" />
         <script src="SpoilerText/spoilerText.js"></script>
-        <h2 class="cell-title">Spoiler Text</h2>
-        <div class="container flex">
-          <div class="flex col justify-evenly">
-            <p><b>Hover</b> to show spoiler text: <span class="spoiler hover">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
-            <p><b>Hold</b> to show spoiler text: <span class="spoiler hold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
-            <p><b>Click</b> to show spoiler text: <span class="spoiler click">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
-            <p><b>Select</b> to show spoiler text: <span class="spoiler selection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
-          </div>
+        <div class="col">
+          <p><b>Hover</b> to show spoiler text: <span class="spoiler hover">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+          <p><b>Hold</b> to show spoiler text: <span class="spoiler hold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+          <p><b>Click</b> to show spoiler text: <span class="spoiler click">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+          <p><b>Select</b> to show spoiler text: <span class="spoiler selection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
         </div>
-      </div>
-      <div id="avatar-status" class="cell">
+      </cell-container>
+      <cell-container id="avatar-status" title="Avatar Status">
         <link rel="stylesheet" href="Avatar/avatar.css" />
-        <h2 class="cell-title">Avatar Status</h2>
-        <div class="container bg-primary flex">
-          <div class="flex col grow-0 justify-evenly">
-            <div class="flex row items-center gap">
+        <div class="flex flex-1 justify-center bg-primary">
+          <div class="col justify-evenly p-2">
+            <div class="row items-center gap-2">
               <div class="avatar online">
                 <div class="icon">
                   <img src="Avatar/avatar.jpg" alt="JL" />
@@ -34,19 +39,19 @@
               </div>
               <div>Online</div>
             </div>
-            <div class="flex row items-center gap">
+            <div class="row items-center gap-2">
               <div class="avatar away">
                 <div class="icon"> JL </div>
               </div>
               <div>Away</div>
             </div>
-            <div class="flex row items-center gap">
+            <div class="row items-center gap-2">
               <div class="avatar busy">
                 <div class="icon"> JL </div>
               </div>
               <div>Busy</div>
             </div>
-            <div class="flex row items-center gap">
+            <div class="row items-center gap-2">
               <div class="avatar speaking">
                 <div class="icon">
                   <img src="Avatar/avatar.jpg" alt="JL" />
@@ -59,52 +64,46 @@
             </div>
           </div>
         </div>
-      </div>
-      <div id="card-flip" class="cell">
+      </cell-container>
+      <cell-container id="card-flip" title="Card Flip">
         <link rel="stylesheet" href="CardFlip/cardFlip.css" />
         <script src="CardFlip/cardFlip.js"></script>
-        <h2 class="cell-title">Card Flip</h2>
-        <div class="container flex items-center">
-          <div class="trading-card">
-            <img class="front" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
-            <img class="back" src="CardFlip/back.jpg" alt="image" />
-          </div>
+        <div class="col self-center trading-card">
+          <img class="front" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
+          <img class="back" src="CardFlip/back.jpg" alt="image" />
         </div>
-      </div>
-      <div id="card-rotation" class="cell">
+      </cell-container>
+      <cell-container id="card-rotation" title="Card Rotation">
         <link rel="stylesheet" href="CardRotation/cardRotation.css" />
         <script src="CardRotation/cardRotation.js"></script>
-        <h2 class="cell-title">Card Rotation</h2>
-        <div class="container flex items-center">
-          <div class="flex trading-card">
-            <img class="card-image" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
-          </div>
+        <div class="col self-center trading-card">
+          <img class="card-image" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
         </div>
-      </div>
-      <div id="nameplate" class="cell">
+      </cell-container>
+      <cell-container id="nameplate" title="Nameplate">
         <link rel="stylesheet" href="Nameplate/nameplate.css" />
         <script src="Nameplate/nameplate.js"></script>
-        <h2 class="cell-title">Nameplate</h2>
-        <div class="container flex row gap self-center" id="nameplate-container">
-          <div class="avatar online">
-            <div class="icon bg-secondary">JL</div>
-          </div>
-          <div class="flex col self-center">
-            <div class="name">Joni Laukka</div>
-            <div class="hover-status" id="hover-status">
-              <div>Online</div>
-              <div><a target="_blank" href="https://github.com/aamoJL/">@aamoJL</a></div>
+        <div id="nameplate-container" class="col flex-1 self-center">
+          <div class="row gap-2">
+            <div class="avatar online">
+              <div class="icon bg-secondary">JL</div>
+            </div>
+            <div class="col self-center">
+              <div class="name">Joni Laukka</div>
+              <div id="hover-status" class="hover-status">
+                <div>Online</div>
+                <div><a target="_blank" href="https://github.com/aamoJL/">@aamoJL</a></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div id="chat" class="cell">
+      </cell-container>
+      <cell-container id="chat" title="Chat">
         <link rel="stylesheet" href="Chat/chat.css" />
         <script src="Chat/chat.js"></script>
-        <h2 class="cell-title">Chat</h2>
-        <div class="container flex col">
-          <div class="messages-container flex">
-            <div class="messages flex col gap" id="messages">
+        <div class="col flex-1">
+          <div class="flex messages-container">
+            <div id="messages" class="col gap-2 messages">
               <template id="chat-message-template">
                 <div class="message">
                   <div class="avatar">
@@ -119,14 +118,14 @@
             </div>
           </div>
           <div>
-            <form id="message-inputs" class="inputs flex">
-              <input class="message-input flex flex-1" id="message-text" type="text" placeholder="Send a message..." autocomplete="off" />
+            <form id="message-inputs" class="flex inputs">
+              <input id="message-text" class="flex flex-1 message-input" type="text" placeholder="Send a message..." autocomplete="off" />
               <button class="submit-btn" type="submit">Send</button>
             </form>
             <div id="typing-notification" class="typing-notification">{user} is typing...</div>
           </div>
         </div>
-      </div>
+      </cell-container>
     </div>
   </body>
 </html>

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", (e) => {
-  document.querySelector("#card-flip > .container > .trading-card")?.addEventListener("mouseover", (e) => {
+  document.querySelector("#card-flip .trading-card")?.addEventListener("mouseover", (e) => {
     let element = /** @type {HTMLElement | null} */ (e.currentTarget);
 
     if (element) {
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     }
   });
 
-  document.querySelector("#card-flip > .container > .trading-card")?.addEventListener("mouseout", (e) => {
+  document.querySelector("#card-flip .trading-card")?.addEventListener("mouseout", (e) => {
     let element = /** @type {HTMLElement | null} */ (e.currentTarget);
 
     if (element) {
