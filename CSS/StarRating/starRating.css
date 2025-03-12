@@ -1,0 +1,22 @@
+#star-rating>div {
+  font-size: xx-large;
+
+  .mask {
+    color: transparent;
+    background-clip: text;
+  }
+
+  #star-container {
+    width: 0%;
+    background-color: var(--color5);
+    -webkit-text-stroke: 1px var(--color5);
+
+    &.hover {
+      background-color: var(--color5);
+    }
+  }
+
+  .star-background {
+    color: var(--color3);
+  }
+}

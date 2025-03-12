@@ -17,6 +17,25 @@
   </head>
   <body>
     <div class="row wrap gap-2">
+      <cell-container id="star-rating" title="Star Rating">
+        <link rel="stylesheet" href="StarRating/starRating.css" />
+        <script src="StarRating/starRating.js"></script>
+        <div class="col justify-center">
+          <div class="flex pos-relative radius-2 p-2 bg-primary">
+            <div class="pos-absolute select-none pointer-none star-background">
+              <div>★★★★★</div>
+            </div>
+            <div id="star-container" class="row select-none z-1 mask">
+              <div data-value="1" name="rating-value-setter">★</div>
+              <div data-value="2" name="rating-value-setter">★</div>
+              <div data-value="3" name="rating-value-setter">★</div>
+              <div data-value="4" name="rating-value-setter">★</div>
+              <div data-value="5" name="rating-value-setter">★</div>
+            </div>
+          </div>
+          <div id="rating-value" class="text-center">0</div>
+        </div>
+      </cell-container>
       <cell-container id="spoiler-text" title="Spoiler Text">
         <link rel="stylesheet" href="SpoilerText/spoilerText.css" />
         <script src="SpoilerText/spoilerText.js"></script>

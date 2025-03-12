@@ -107,6 +107,54 @@ body {
   font-size: x-small;
 }
 
+.font-xxl {
+  font-size: xx-large;
+}
+
+.select-none {
+  user-select: none;
+}
+
+.pos-absolute {
+  position: absolute;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.radius-1 {
+  border-radius: var(--spacing1);
+}
+
+.radius-2 {
+  border-radius: var(--spacing2);
+}
+
+.pointer-none {
+  pointer-events: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
 /*#region Cell Container*/
 cell-container {
   display: flex;
