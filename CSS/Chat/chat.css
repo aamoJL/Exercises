@@ -1,34 +1,33 @@
-#chat > div {
-  border-radius: 5px;
-  background-color: var(--color1);
-
+#chat>div {
   .messages-container {
     flex: 1 1 auto;
     flex-direction: column-reverse;
     overflow-y: scroll;
-    background-color: var(--color2);
     border-radius: inherit;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
-    -ms-overflow-style: none; /* Edge */
-    scrollbar-width: none; /* Firefox */
+    /* Firefox */
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
-      display: none; /* Chrome */
+      /* Chrome */
+      display: none;
     }
 
     .messages {
-      padding: 10px;
-      flex: 0;
-
       .message {
-        display: flex;
-        max-width: 80%;
-        gap: 10px;
-
         &.sent {
           flex-direction: row-reverse;
           align-self: flex-end;
+
+          .icon {
+            color: var(--color-background);
+            background-color: var(--color-primary);
+          }
+
+          .text-container {
+            border-top-right-radius: 0;
+          }
         }
 
         &.received {
@@ -36,28 +35,18 @@
           align-self: flex-start;
 
           .icon {
-            background-color: var(--color1);
+            color: var(--color-background);
+            background-color: var(--color-secondary);
+          }
+
+          .text-container {
+            border-top-left-radius: 0;
           }
         }
 
         .text-container {
-          flex: 1;
-          border-radius: 10px;
-          background-color: var(--color3);
-          margin: 0;
-          padding: 10px;
-
           .text {
             word-break: break-word;
-            margin: 0;
-          }
-
-          .date {
-            font-size: x-small;
-            color: gray;
-            margin: 0;
-            user-select: none;
-            text-align: right;
           }
         }
       }
@@ -65,42 +54,14 @@
   }
 
   .inputs {
-    margin: 10px;
-    gap: 10px;
-
-    .message-input {
-      background-color: var(--color3);
-      border: 0;
-      padding: 10px;
-      border-radius: 30px;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
-    .submit-btn {
-      background-color: var(--color4);
-      border-radius: 10px;
-      border: 0;
-      transition-duration: 0.4s;
-
-      &:hover {
-        background-color: var(--color5);
-        transition-duration: 0.1s;
-        color: white;
-      }
-
-      &:active {
-        background-color: var(--color4);
-      }
-    }
+    margin-top: var(--spacing1);
   }
 
   .typing-notification {
     overflow: hidden;
-    padding-left: 10px;
-    margin: 0;
+    color: var(--color-text-secondary);
+    padding-left: var(--spacing2);
+    margin: 5px 0 0 0;
     height: 0;
     font-size: small;
     transition: height 0.4s;

@@ -17,26 +17,33 @@
   </head>
   <body>
     <div class="row wrap gap-2">
-      <cell-container id="star-rating" title="Star Rating">
+      <cell-container id="star-rating" cell-title="Star Rating">
         <link rel="stylesheet" href="StarRating/starRating.css" />
         <script src="StarRating/starRating.js"></script>
         <div class="col justify-center">
-          <div class="flex pos-relative radius-2 p-2 bg-primary">
-            <div class="pos-absolute select-none pointer-none star-background">
-              <div>★★★★★</div>
-            </div>
-            <div id="star-container" class="row select-none z-1 mask">
-              <div data-value="1" name="rating-value-setter">★</div>
-              <div data-value="2" name="rating-value-setter">★</div>
-              <div data-value="3" name="rating-value-setter">★</div>
-              <div data-value="4" name="rating-value-setter">★</div>
-              <div data-value="5" name="rating-value-setter">★</div>
+          <div class="p-2 text-center">
+            <span class="secondary font-s"><b>Click</b>: select or remove value</span>
+            <!-- <br> -->
+            <!-- <span class="secondary font-s"><b>Drag</b>: select range</span> -->
+          </div>
+          <div class="flex justify-center">
+            <div class="flex pos-relative radius-2 p-2 elevation font-xxl rating-container">
+              <div class="pos-absolute flex select-none pointer-none star-background">
+                <span class="secondary">★★★★★</span>
+              </div>
+              <div id="star-container" class="row select-none z-1 mask">
+                <span data-value="1" name="rating-value-setter">★</span>
+                <span data-value="2" name="rating-value-setter">★</span>
+                <span data-value="3" name="rating-value-setter">★</span>
+                <span data-value="4" name="rating-value-setter">★</span>
+                <span data-value="5" name="rating-value-setter">★</span>
+              </div>
             </div>
           </div>
-          <div id="rating-value" class="text-center">0</div>
+          <div id="rating-value" class="text-center font-xxl">0</div>
         </div>
       </cell-container>
-      <cell-container id="spoiler-text" title="Spoiler Text">
+      <cell-container id="spoiler-text" cell-title="Spoiler Text">
         <link rel="stylesheet" href="SpoilerText/spoilerText.css" />
         <script src="SpoilerText/spoilerText.js"></script>
         <div class="col">
@@ -46,10 +53,10 @@
           <p><b>Select</b> to show spoiler text: <span class="spoiler selection">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
         </div>
       </cell-container>
-      <cell-container id="avatar-status" title="Avatar Status">
+      <cell-container id="avatar-status" cell-title="Avatar Status">
         <link rel="stylesheet" href="Avatar/avatar.css" />
-        <div class="flex flex-1 justify-center bg-primary">
-          <div class="col justify-evenly p-2">
+        <div class="flex flex-1 justify-center p-2">
+          <div class="col justify-evenly">
             <div class="row items-center gap-2">
               <div class="avatar online">
                 <div class="icon">
@@ -60,13 +67,13 @@
             </div>
             <div class="row items-center gap-2">
               <div class="avatar away">
-                <div class="icon"> JL </div>
+                <div class="icon bg-primary"> JL </div>
               </div>
               <div>Away</div>
             </div>
             <div class="row items-center gap-2">
               <div class="avatar busy">
-                <div class="icon"> JL </div>
+                <div class="icon bg-primary"> JL </div>
               </div>
               <div>Busy</div>
             </div>
@@ -84,7 +91,7 @@
           </div>
         </div>
       </cell-container>
-      <cell-container id="card-flip" title="Card Flip">
+      <cell-container id="card-flip" cell-title="Card Flip">
         <link rel="stylesheet" href="CardFlip/cardFlip.css" />
         <script src="CardFlip/cardFlip.js"></script>
         <div class="col self-center trading-card">
@@ -92,24 +99,24 @@
           <img class="back" src="CardFlip/back.jpg" alt="image" />
         </div>
       </cell-container>
-      <cell-container id="card-rotation" title="Card Rotation">
+      <cell-container id="card-rotation" cell-title="Card Rotation">
         <link rel="stylesheet" href="CardRotation/cardRotation.css" />
         <script src="CardRotation/cardRotation.js"></script>
         <div class="col self-center trading-card">
           <img class="card-image" src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477" alt="image" />
         </div>
       </cell-container>
-      <cell-container id="nameplate" title="Nameplate">
+      <cell-container id="nameplate" cell-title="Nameplate">
         <link rel="stylesheet" href="Nameplate/nameplate.css" />
         <script src="Nameplate/nameplate.js"></script>
-        <div id="nameplate-container" class="col flex-1 self-center">
+        <div id="nameplate-container" class="col flex-1 p-2 radius-2 select-none self-center elevation hover">
           <div class="row gap-2">
             <div class="avatar online">
-              <div class="icon bg-secondary">JL</div>
+              <div class="icon bg-primary">JL</div>
             </div>
             <div class="col self-center">
-              <div class="name">Joni Laukka</div>
-              <div id="hover-status" class="hover-status">
+              <div class="bold">Joni Laukka</div>
+              <div id="hover-status" class="pos-relative p-0 m-0 hover-status">
                 <div>Online</div>
                 <div><a target="_blank" href="https://github.com/aamoJL/">@aamoJL</a></div>
               </div>
@@ -117,29 +124,29 @@
           </div>
         </div>
       </cell-container>
-      <cell-container id="chat" title="Chat">
+      <cell-container id="chat" cell-title="Chat">
         <link rel="stylesheet" href="Chat/chat.css" />
         <script src="Chat/chat.js"></script>
         <div class="col flex-1">
-          <div class="flex messages-container">
-            <div id="messages" class="col gap-2 messages">
+          <div class="flex elevation messages-container">
+            <div id="messages" class="col flex-0 gap-2 p-2 messages">
               <template id="chat-message-template">
-                <div class="message">
+                <div class="flex gap-2 message">
                   <div class="avatar">
                     <div class="icon">{user}</div>
                   </div>
-                  <div class="text-container">
-                    <p class="text">{text}</p>
-                    <p class="date">{date}</p>
+                  <div class="flex-1 radius-2 p-2 elevation-2 text-container">
+                    <p class="m-0 text">{text}</p>
+                    <p class="secondary m-0 font-xs select-none text-right date">{date}</p>
                   </div>
                 </div>
               </template>
             </div>
           </div>
           <div>
-            <form id="message-inputs" class="flex inputs">
+            <form id="message-inputs" class="flex inputs gap-1">
               <input id="message-text" class="flex flex-1 message-input" type="text" placeholder="Send a message..." autocomplete="off" />
-              <button class="submit-btn" type="submit">Send</button>
+              <button class="submit-btn primary" type="submit">Send</button>
             </form>
             <div id="typing-notification" class="typing-notification">{user} is typing...</div>
           </div>

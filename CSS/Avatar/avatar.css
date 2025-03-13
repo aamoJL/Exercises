@@ -1,3 +1,9 @@
+:root {
+  --color-online: green;
+  --color-away: orange;
+  --color-busy: red;
+}
+
 .avatar {
   display: flex;
   position: relative;
@@ -13,8 +19,7 @@
     font-weight: bold;
     user-select: none;
     border-radius: 50%;
-    border: var(--color2) 2px solid;
-    background-color: var(--color5);
+    border: hsl(from var(--color-background) h s calc(l + var(--elevation))) 2px solid;
 
     img {
       object-fit: cover;
@@ -25,7 +30,8 @@
   }
 
   &:is(.online, .away, .busy) .icon {
-    mask-image: none; /* Compatibility */
+    mask-image: none;
+    /* Compatibility */
     -webkit-mask-image: radial-gradient(circle at 87.5% 87.5%, transparent 18%, black 0);
   }
 
@@ -40,22 +46,23 @@
   }
 
   &.online::after {
-    background-color: green;
+    background-color: var(--color-online);
   }
 
   &.away::after {
-    background-color: orange;
-    mask-image: none; /* Compatibility */
+    background-color: var(--color-away);
+    mask-image: none;
+    /* Compatibility */
     -webkit-mask-image: radial-gradient(circle at 30% 30%, transparent 30%, black 0);
   }
 
   &.busy::after {
-    background-color: red;
+    background-color: var(--color-busy);
   }
 
   &.speaking:hover {
     .icon {
-      border-color: green;
+      border-color: var(--color-primary);
     }
 
     &::after {
@@ -64,7 +71,7 @@
       height: 100%;
       width: 100%;
       border-radius: inherit;
-      outline: var(--color3) solid 0px;
+      outline: var(--color-primary) solid 0px;
       animation: avatar-speaker-ripple 500ms ease-out 0s infinite normal;
     }
   }
@@ -75,6 +82,7 @@
     outline-width: 0px;
     opacity: 1;
   }
+
   to {
     outline-width: 10px;
     opacity: 0;

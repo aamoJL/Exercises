@@ -1,23 +1,112 @@
 :root {
-  --color1: #ccd5ae;
-  --color2: #e9edc9;
-  --color3: #fefae0;
-  --color4: #faedcd;
-  --color5: #d4a373;
-
+  --color-primary: #f8a5fb;
+  --color-primary-hover: hsl(from var(--color-primary) h s calc(l + 3));
+  --color-primary-active: hsl(from var(--color-primary-hover) h s calc(l + 3));
+  --color-secondary: #6ab7ff;
+  --color-background: #0f0f0f;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #888888;
+  --color-border: #484848;
+  --color-input-border: #d0d0d0;
+  --color-input-border-hover: var(--color-text);
   --spacing1: 4px;
-  --spacing2: 8px;
-  --spacing3: 16px;
-  --spacing4: 32px;
+  --spacing2: calc(var(--spacing1) * 2);
+  --spacing3: calc(var(--spacing2) * 2);
+  --radius1: 2px;
+  --radius2: calc(var(--radius1) * 2);
+  --elevation: 8;
+  --elevation2: calc(var(--elevation) * 2);
 }
 
+/*#region Elements*/
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--color3);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+input {
+  background-color: transparent;
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--radius1);
+  color: var(--color-text);
+  padding: var(--spacing2);
+  padding-right: var(--spacing2);
+
+  &:hover {
+    border-color: var(--color-input-border-hover);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    outline: 0;
+  }
+}
+
+button {
+  display: flex;
+  font-family: inherit;
+  border: 0;
+  border-radius: var(--radius1);
+  font-weight: 600;
+  cursor: pointer;
+  padding: var(--spacing2);
+
+  &.primary {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+
+    &:active {
+      background-color: var(--color-primary-active);
+    }
+  }
+}
+
+:is(p, span).secondary {
+  color: var(--color-text-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+/*#endregion*/
+
+.elevation {
+  background-color: hsl(from var(--color-background) h s calc(l + var(--elevation)));
+
+  &.hover:hover {
+    background-color: hsl(from var(--color-background) h s calc(l + var(--elevation) + 5));
+  }
+}
+
+.elevation-2 {
+  background-color: hsl(from var(--color-background) h s calc(l + var(--elevation2)));
+
+  &.hover:hover {
+    background-color: hsl(from var(--color-background) h s calc(l + var(--elevation2) + 5));
+  }
 }
 
 .flex {
   display: flex;
+}
+
+.flex-0 {
+  flex: 0;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .row {
@@ -63,6 +152,10 @@ body {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .grow-0 {
   flex-grow: 0;
 }
@@ -71,16 +164,20 @@ body {
   flex-shrink: 0;
 }
 
-.flex-1 {
-  flex: 1;
-}
-
 .hidden {
   visibility: hidden;
 }
 
+.m-0 {
+  margin: 0;
+}
+
 .m-1 {
   margin: var(--spacing1);
+}
+
+.p-0 {
+  padding: 0;
 }
 
 .p-1 {
@@ -95,12 +192,8 @@ body {
   border: var(--color2) 1px solid;
 }
 
-.bg-primary {
-  background-color: var(--color1);
-}
-
-.bg-secondary {
-  background-color: var(--color5);
+.font-s {
+  font-size: small;
 }
 
 .font-xs {
@@ -109,6 +202,10 @@ body {
 
 .font-xxl {
   font-size: xx-large;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .select-none {
@@ -155,27 +252,36 @@ body {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
 /*#region Cell Container*/
 cell-container {
   display: flex;
   position: relative;
   height: 300px;
   max-width: 300px;
-  box-shadow: 0px 0px 5px 0px #0000002e;
-  padding: 10px;
+  border: 1px solid var(--color-border);
+  padding: var(--spacing3);
   flex: 1 0 auto;
 }
 
 .cell-title {
   z-index: 1;
   margin: 0;
-  padding: 0 10px 0 10px;
+  padding: 0 var(--spacing2) 0 var(--spacing2);
   font-size: smaller;
   position: absolute;
   top: 0;
   left: 0;
-  color: white;
-  background-color: #000000ce;
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 .container {

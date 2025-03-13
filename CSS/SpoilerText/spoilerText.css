@@ -1,34 +1,33 @@
-#spoiler-text > div {
-  line-height: 1.4em;
-  
-  *.spoiler {
-    background-color: gray;
-    color: gray;
-    border-radius: 5px;
-    transition: background-color .1s linear;
-    
-    &.hover:hover {
+.spoiler {
+  background-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  transition: background-color .1s linear;
+
+  &.hover:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  &.hold:active {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  &.click {
+    user-select: none;
+
+    &.show {
+      user-select: auto;
       background-color: inherit;
       color: inherit;
-    }
-
-    &.hold:active {
-      background-color: inherit;
-      color: inherit;
-    }
-
-    &.click {
-      user-select: none;
-      
-      &.show {
-        user-select: auto;
-        background-color: inherit;
-        color: inherit;
-      }
-    }
-
-    &.selection::selection{
-      color: white;
     }
   }
+
+  &.selection::selection {
+    color: white;
+  }
+}
+
+#spoiler-text>div {
+  line-height: 1.4em;
 }

@@ -1,6 +1,4 @@
 #star-rating>div {
-  font-size: xx-large;
-
   .mask {
     color: transparent;
     background-clip: text;
@@ -8,15 +6,20 @@
 
   #star-container {
     width: 0%;
-    background-color: var(--color5);
-    -webkit-text-stroke: 1px var(--color5);
+    line-height: 100%;
+    background-color: var(--color-primary);
 
     &.hover {
-      background-color: var(--color5);
+      background-color: var(--color-secondary);
     }
   }
 
+  .rating-container {
+    width: fit-content;
+  }
+
   .star-background {
-    color: var(--color3);
+    line-height: 100%;
+    color: var(--color-background);
   }
 }
