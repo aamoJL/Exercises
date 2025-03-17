@@ -2,24 +2,24 @@
   .mask {
     color: transparent;
     background-clip: text;
+    clip-path: inset(0% 100% 0% 0%);
   }
 
-  #star-container {
-    width: 0%;
-    line-height: 100%;
+  #value-visual-container {
     background-color: var(--color-primary);
 
     &.hover {
+      transition: width .05s linear;
       background-color: var(--color-secondary);
     }
   }
 
-  .rating-container {
-    width: fit-content;
+  .star-icon {
+    margin-bottom: .2em;
   }
 
-  .star-background {
+  .rating-container {
     line-height: 100%;
-    color: var(--color-background);
+    width: fit-content;
   }
 }
