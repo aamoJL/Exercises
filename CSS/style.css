@@ -64,6 +64,20 @@ button {
       background-color: var(--color-primary-active);
     }
   }
+
+  &.text {
+    padding: 0;
+    background-color: transparent;
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-primary-hover);
+    }
+
+    &:active {
+      color: var(--color-primary-active);
+    }
+  }
 }
 
 :is(p, span).secondary {
@@ -259,6 +273,14 @@ a {
 .bg-primary {
   background-color: var(--color-primary);
   color: var(--color-background);
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 /*#region Cell Container*/
