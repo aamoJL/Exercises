@@ -81,6 +81,10 @@ button {
   }
 }
 
+:is(p, span).primary {
+  color: var(--color-primary);
+}
+
 :is(p, span).secondary {
   color: var(--color-text-secondary);
 }
