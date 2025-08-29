@@ -1,10 +1,18 @@
 #nameplate {
-  #nameplate-container {
-    justify-content: flex-start;
-  }
+  justify-content: flex-start;
 
-  .hover-status {
+  .status-container {
     height: 1.25em;
     overflow: hidden;
+
+    .hover-status {
+      transition: all .4s ease-out;
+    }
+  }
+
+  :hover {
+    .status-container .hover-status {
+      margin-top: -1.25em;
+    }
   }
 }
