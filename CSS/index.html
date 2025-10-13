@@ -19,6 +19,27 @@
 
 <body>
   <div class="row wrap gap-2 m-2">
+    <cell-container id="flip-card" cell-title="Flip Card">
+      <link rel="stylesheet" href="FlipCard/flipCard.css" />
+      <script src="FlipCard/flipCard.js"></script>
+      <div class="col self-center flip-card-container">
+        <div class="front card">
+          <div class="content">
+            <div class="hover-content">
+              Click
+            </div>
+            <h3>Front</h3>
+            <p>Click to see content on the other side.</p>
+          </div>
+        </div>
+        <div class="back card">
+          <div class="content">
+            <h3>Back</h3>
+            <button class="primary justify-center w-100">Flip</button>
+          </div>
+        </div>
+      </div>
+    </cell-container>
     <cell-container id="info-popup" cell-title="Info Popup">
       <link rel="stylesheet" href="InfoPopup/infoPopup.css">
       <div class="col justify-evenly">
@@ -154,7 +175,6 @@
     </cell-container>
     <cell-container id="card-flip" cell-title="Card Flip">
       <link rel="stylesheet" href="CardFlip/cardFlip.css" />
-      <script src="CardFlip/cardFlip.js"></script>
       <div class="col self-center trading-card">
         <img class="front"
           src="https://cards.scryfall.io/normal/front/b/0/b0faa7f2-b547-42c4-a810-839da50dadfe.jpg?1559591477"

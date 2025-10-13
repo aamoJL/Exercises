@@ -26,11 +26,12 @@
       }
     }
 
-    &.flipped {
+    &:hover {
       img {
         &.back {
           transform: rotateY(0deg);
         }
+
         &.front {
           transform: rotateY(-180deg);
         }
