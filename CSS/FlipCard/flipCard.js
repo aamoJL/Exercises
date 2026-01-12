@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", (e) => {
   var root = document.querySelector("#flip-card")
 
-  root?.querySelector(".hover-content")?.addEventListener("click", (_) => {
+  root?.querySelector(".front .content")?.addEventListener("click", (_) => {
     root.classList.add("flipped")
   })
 

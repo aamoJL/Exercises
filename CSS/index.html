@@ -19,15 +19,23 @@
 
 <body>
   <div class="row wrap gap-2 m-2">
+    <cell-container id="raffle-wheel" cell-title="Raffle Wheel">
+      <script src="RaffleWheel/raffleWheel.js"></script>
+      <div class="col self-center gap-2">
+        <div class="row">
+          <canvas id="raffle-wheel-canvas" class="w-100 pointer" width="200" height="200"></canvas>
+        </div>
+        <div class="row gap-2">
+          <div class="self-center">Winner: <span id="raffle-winner-name"></span></div>
+        </div>
+      </div>
+    </cell-container>
     <cell-container id="flip-card" cell-title="Flip Card">
       <link rel="stylesheet" href="FlipCard/flipCard.css" />
       <script src="FlipCard/flipCard.js"></script>
       <div class="col self-center flip-card-container">
         <div class="front card">
           <div class="content">
-            <div class="hover-content">
-              Click
-            </div>
             <h3>Front</h3>
             <p>Click to see content on the other side.</p>
           </div>
