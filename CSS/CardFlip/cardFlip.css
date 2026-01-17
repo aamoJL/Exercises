@@ -11,18 +11,17 @@
       border-radius: 12px;
 
       &.front {
-        transform: rotateY(0deg);
         transition: transform 0.3s linear;
         backface-visibility: hidden;
       }
 
       &.back {
         position: absolute;
+        backface-visibility: hidden;
         left: 0;
         top: 0;
         transform: rotateY(180deg);
         transition: transform 0.3s linear;
-        z-index: -1;
       }
     }
 

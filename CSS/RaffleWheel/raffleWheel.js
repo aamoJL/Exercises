@@ -6,7 +6,7 @@ const wheelProperties = {
   rotationSpeed: 20,
   fullSpins: 5
 }
-var wheelIsrunning = false
+var wheelIsRunning = false
 var currentWheelRotation = 0
 
 document.addEventListener("DOMContentLoaded", _ => {
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", _ => {
   drawWheel(context, segments, degreesToRadians((360 / segments.length) / 2))
 
   document.getElementById("raffle-wheel-canvas").addEventListener("click", _ => {
-    if (wheelIsrunning) return
+    if (wheelIsRunning) return
 
-    wheelIsrunning = true
+    wheelIsRunning = true
 
     const winnerTextElement = document.getElementById("raffle-winner-name")
     const winnerIndex = Math.floor(Math.random() * segments.length)
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", _ => {
     winnerTextElement.textContent = "..."
 
     spinWheel(context, segments, rotation, () => {
-      wheelIsrunning = false
+      wheelIsRunning = false
       winnerTextElement.textContent = segments[winnerIndex].name
     })
   })
