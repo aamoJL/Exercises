@@ -30,7 +30,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     {
       var actual = WeightedAdjacencyListDepthFirstSearch.GetPath(graph, path.First(), path.Last());
 
-      CollectionAssert.AreEqual(path, actual, $"Path: {path.First()} -> {path.Last()}");
+      Assert.AreSequenceEqual(path, actual, $"Path: {path.First()} -> {path.Last()}");
     }
   }
 
@@ -51,7 +51,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     var expected = Array.Empty<uint>();
     var actual = WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 0, 4);
 
-    CollectionAssert.AreEqual(expected, actual);
+    Assert.AreSequenceEqual(expected, actual);
   }
 
   [TestMethod]
@@ -71,7 +71,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     var expected = Array.Empty<uint>();
     var actual = WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 1, 3);
 
-    CollectionAssert.AreEqual(expected, actual);
+    Assert.AreSequenceEqual(expected, actual);
   }
 
   [TestMethod]
@@ -88,7 +88,7 @@ public class WeightedAdjacencyListDepthFirstSearchTests
     };
 
     // 4 -> 0
-    Assert.ThrowsException<ArgumentOutOfRangeException>(
+    Assert.Throws<ArgumentOutOfRangeException>(
       () => WeightedAdjacencyListDepthFirstSearch.GetPath(graph, 4, 0));
   }
 }

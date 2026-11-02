@@ -13,7 +13,7 @@ public class BubbleSortTests
 
     BubbleSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -32,7 +32,7 @@ public class BubbleSortTests
 
     BubbleSort.SortOptimized(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]

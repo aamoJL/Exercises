@@ -20,7 +20,7 @@ public class StackTests
   {
     var list = new Algorithms.DataStructures.Stack<int>();
 
-    Assert.ThrowsException<InvalidOperationException>(() => list.Pop());
+    Assert.Throws<InvalidOperationException>(() => list.Pop());
   }
 
   [TestMethod]
@@ -59,7 +59,7 @@ public class StackTests
   {
     var list = new Algorithms.DataStructures.Stack<int>();
 
-    Assert.ThrowsException<InvalidOperationException>(() => list.Peek());
+    Assert.Throws<InvalidOperationException>(() => list.Peek());
   }
 
   [TestMethod]
@@ -76,7 +76,7 @@ public class StackTests
 
     Assert.AreEqual(0, list.Count);
 
-    Assert.ThrowsException<InvalidOperationException>(() => list.Pop());
+    Assert.Throws<InvalidOperationException>(() => list.Pop());
   }
 
   [TestMethod]
@@ -87,7 +87,7 @@ public class StackTests
 
     var result = list.ToArray(Algorithms.DataStructures.Stack<int>.ArrayOrder.FirstIsFirst);
 
-    CollectionAssert.AreEqual(array.Reverse().ToArray(), result);
+    Assert.AreSequenceEqual(array.Reverse().ToArray(), result);
   }
 
   [TestMethod]
@@ -98,7 +98,7 @@ public class StackTests
 
     var result = list.ToArray(Algorithms.DataStructures.Stack<int>.ArrayOrder.LastIsFirst);
 
-    CollectionAssert.AreEqual(array, result);
+    Assert.AreSequenceEqual(array, result);
   }
 
   [TestMethod]

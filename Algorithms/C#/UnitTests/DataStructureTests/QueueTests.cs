@@ -43,7 +43,7 @@ public class QueueTests
   {
     var list = new Algorithms.DataStructures.Queue<int>();
 
-    Assert.ThrowsException<InvalidOperationException>(() => list.Dequeue());
+    Assert.Throws<InvalidOperationException>(() => list.Dequeue());
   }
 
   [TestMethod]
@@ -86,7 +86,7 @@ public class QueueTests
   {
     var list = new Algorithms.DataStructures.Queue<int>();
 
-    Assert.ThrowsException<InvalidOperationException>(() => list.Peek());
+    Assert.Throws<InvalidOperationException>(() => list.Peek());
   }
 
   [TestMethod]
@@ -117,6 +117,6 @@ public class QueueTests
 
     var result = list.ToArray();
 
-    CollectionAssert.AreEqual(array, result);
+    Assert.AreSequenceEqual(array, result);
   }
 }

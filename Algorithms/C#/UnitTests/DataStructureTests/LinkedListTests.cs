@@ -13,8 +13,8 @@ public class LinkedListTests
 
     Assert.AreEqual(array.Length, list.Count);
 
-    CollectionAssert.AreEqual(array, list.ToArray());
-    CollectionAssert.AreEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(array, list.ToArray());
+    Assert.AreSequenceEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -25,7 +25,7 @@ public class LinkedListTests
 
     var reversedList = list.GetReversedList();
 
-    CollectionAssert.AreEqual(array.Reverse().ToArray(), reversedList.ToArray());
+    Assert.AreSequenceEqual(array.Reverse().ToArray(), reversedList.ToArray());
   }
 
   [TestMethod]
@@ -38,8 +38,8 @@ public class LinkedListTests
     var expected = new int[] { 1, 2, 3 };
 
     Assert.AreEqual(3, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -57,7 +57,7 @@ public class LinkedListTests
   {
     var list = new Algorithms.DataStructures.LinkedList<int>([1, 2, 3]);
 
-    Assert.ThrowsException<IndexOutOfRangeException>(() => list.Get(3));
+    Assert.Throws<IndexOutOfRangeException>(() => list.Get(3));
   }
 
   [TestMethod]
@@ -70,8 +70,8 @@ public class LinkedListTests
     var expected = new int[] { 1, 4, 2, 3 };
 
     Assert.AreEqual(4, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -84,7 +84,7 @@ public class LinkedListTests
     var expected = new int[] { 1 };
 
     Assert.AreEqual(1, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -92,7 +92,7 @@ public class LinkedListTests
   {
     var list = new Algorithms.DataStructures.LinkedList<int>();
 
-    Assert.ThrowsException<IndexOutOfRangeException>(() => list.InsertAt(index: 1, item: 2));
+    Assert.Throws<IndexOutOfRangeException>(() => list.InsertAt(index: 1, item: 2));
   }
 
   [TestMethod]
@@ -105,8 +105,8 @@ public class LinkedListTests
     var expected = new int[] { 0, 1, 2 };
 
     Assert.AreEqual(3, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -120,8 +120,8 @@ public class LinkedListTests
     var expected = new int[] { 1, 2 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -135,8 +135,8 @@ public class LinkedListTests
     var expected = new int[] { 0, 2 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -150,8 +150,8 @@ public class LinkedListTests
     var expected = new int[] { 0, 1 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -172,8 +172,8 @@ public class LinkedListTests
     var expected = new int[] { 2, 3 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -186,8 +186,8 @@ public class LinkedListTests
     var expected = new int[] { 1, 3 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -200,8 +200,8 @@ public class LinkedListTests
     var expected = new int[] { 1, 2 };
 
     Assert.AreEqual(2, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
-    CollectionAssert.AreEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 
   [TestMethod]
@@ -214,7 +214,7 @@ public class LinkedListTests
     var expected = Array.Empty<int>();
 
     Assert.AreEqual(0, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -222,7 +222,7 @@ public class LinkedListTests
   {
     var list = new Algorithms.DataStructures.LinkedList<int>();
 
-    Assert.ThrowsException<IndexOutOfRangeException>(() => list.RemoveAt(0));
+    Assert.Throws<IndexOutOfRangeException>(() => list.RemoveAt(0));
   }
 
   [TestMethod]
@@ -236,7 +236,7 @@ public class LinkedListTests
     var expected = new int[] { 4 };
 
     Assert.AreEqual(1, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -250,7 +250,7 @@ public class LinkedListTests
     var expected = new int[] { 4 };
 
     Assert.AreEqual(1, list.Count);
-    CollectionAssert.AreEqual(expected, list.ToArray());
+    Assert.AreSequenceEqual(expected, list.ToArray());
   }
 
   [TestMethod]
@@ -259,7 +259,7 @@ public class LinkedListTests
     var array = Array.Empty<int>();
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    CollectionAssert.AreEqual(array, list.ToArray());
+    Assert.AreSequenceEqual(array, list.ToArray());
   }
 
   [TestMethod]
@@ -268,7 +268,7 @@ public class LinkedListTests
     var array = new int[] { 4, 5, 2, 3, 5, 1 };
     var list = new Algorithms.DataStructures.LinkedList<int>(array);
 
-    CollectionAssert.AreEqual(array, list.ToArray());
-    CollectionAssert.AreEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
+    Assert.AreSequenceEqual(array, list.ToArray());
+    Assert.AreSequenceEqual(array.Reverse().ToArray(), list.GetReversedList().ToArray());
   }
 }

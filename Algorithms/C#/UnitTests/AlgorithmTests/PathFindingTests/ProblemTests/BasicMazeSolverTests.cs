@@ -25,7 +25,7 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(expectedPath, actualPath);
+    Assert.AreSequenceEqual(expectedPath, actualPath);
   }
 
   [TestMethod]
@@ -50,7 +50,7 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(expectedPath, actualPath);
+    Assert.AreSequenceEqual(expectedPath, actualPath);
   }
 
   [TestMethod]
@@ -77,7 +77,7 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(expectedPath, actualPath);
+    Assert.AreSequenceEqual(expectedPath, actualPath);
   }
 
   [TestMethod]
@@ -91,7 +91,7 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(Array.Empty<(int, int)>(), actualPath);
+    Assert.AreSequenceEqual(Array.Empty<(int, int)>(), actualPath);
   }
 
   [TestMethod]
@@ -105,7 +105,7 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(Array.Empty<(int, int)>(), actualPath);
+    Assert.AreSequenceEqual(Array.Empty<(int, int)>(), actualPath);
   }
 
   [TestMethod]
@@ -119,6 +119,6 @@ public class BasicMazeSolverTests
 
     var actualPath = BasicMazeSolver.Solve(maze);
 
-    CollectionAssert.AreEqual(Array.Empty<(int, int)>(), actualPath);
+    Assert.AreSequenceEqual(Array.Empty<(int, int)>(), actualPath);
   }
 }

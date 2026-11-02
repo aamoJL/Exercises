@@ -46,50 +46,66 @@ public class BinaryTreeNode<T>(T value) : BinaryTree
   {
     return strategy switch
     {
-      TraversalStrategy.PreOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.InOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.PostOrder => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
-      TraversalStrategy.BreadthFirst => ToArrayTraversal(this, new Queue<T>(), strategy).ToArray(),
+      TraversalStrategy.PreOrder => PreOrderTraversal(this, new Queue<T>()).ToArray(),
+      TraversalStrategy.InOrder => InOrderTraversal(this, new Queue<T>()).ToArray(),
+      TraversalStrategy.PostOrder => PostOrderTraversal(this, new Queue<T>()).ToArray(),
+      TraversalStrategy.BreadthFirst => BreadthFirstTraversal(this, new Queue<T>()).ToArray(),
       _ => throw new NotImplementedException(),
     };
   }
 
-  private static Queue<T> ToArrayTraversal(BinaryTreeNode<T>? root, Queue<T> items, TraversalStrategy strategy)
+  private static Queue<T> PreOrderTraversal(BinaryTreeNode<T>? root, Queue<T> items)
   {
     if (root == null)
       return items;
 
-    switch (strategy)
+    items.Enqueue(root.Value);
+    PreOrderTraversal(root.Left, items);
+    PreOrderTraversal(root.Right, items);
+
+    return items;
+  }
+
+  private static Queue<T> InOrderTraversal(BinaryTreeNode<T>? root, Queue<T> items)
+  {
+    if (root == null)
+      return items;
+
+    InOrderTraversal(root.Left, items);
+    items.Enqueue(root.Value);
+    InOrderTraversal(root.Right, items);
+
+    return items;
+  }
+
+  private static Queue<T> PostOrderTraversal(BinaryTreeNode<T>? root, Queue<T> items)
+  {
+    if (root == null)
+      return items;
+
+    PostOrderTraversal(root.Left, items);
+    PostOrderTraversal(root.Right, items);
+    items.Enqueue(root.Value);
+
+    return items;
+  }
+
+  private static Queue<T> BreadthFirstTraversal(BinaryTreeNode<T>? root, Queue<T> items)
+  {
+    if (root == null)
+      return items;
+
+    var queue = new Queue<BinaryTreeNode<T>?>([root]);
+
+    while (queue.Count > 0)
     {
-      case TraversalStrategy.PreOrder:
-        items.Enqueue(root.Value);
-        ToArrayTraversal(root.Left, items, strategy);
-        ToArrayTraversal(root.Right, items, strategy);
-        break;
-      case TraversalStrategy.InOrder:
-        ToArrayTraversal(root.Left, items, strategy);
-        items.Enqueue(root.Value);
-        ToArrayTraversal(root.Right, items, strategy);
-        break;
-      case TraversalStrategy.PostOrder:
-        ToArrayTraversal(root.Left, items, strategy);
-        ToArrayTraversal(root.Right, items, strategy);
-        items.Enqueue(root.Value);
-        break;
-      case TraversalStrategy.BreadthFirst:
-        var queue = new Queue<BinaryTreeNode<T>?>([root]);
+      if (queue.Dequeue() is not BinaryTreeNode<T> node)
+        continue;
 
-        while (queue.Count > 0)
-        {
-          if (queue.Dequeue() is not BinaryTreeNode<T> node)
-            continue;
+      items.Enqueue(node.Value);
 
-          items.Enqueue(node.Value);
-
-          queue.Enqueue(node.Left);
-          queue.Enqueue(node.Right);
-        }
-        break;
+      queue.Enqueue(node.Left);
+      queue.Enqueue(node.Right);
     }
 
     return items;

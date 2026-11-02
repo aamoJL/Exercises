@@ -33,7 +33,7 @@ public class DijkstraPathFinderTests
     {
       var actual = DijkstrasPathFinder.Solve(graph, from, to);
 
-      CollectionAssert.AreEqual(expected, actual);
+      Assert.AreSequenceEqual(expected, actual);
     }
   }
 
@@ -55,7 +55,7 @@ public class DijkstraPathFinderTests
 
     var actual = DijkstrasPathFinder.Solve(graph, 0, 9);
 
-    CollectionAssert.AreEqual(Array.Empty<uint>(), actual);
+    Assert.AreSequenceEqual(Array.Empty<uint>(), actual);
   }
 
   [TestMethod]
@@ -74,6 +74,6 @@ public class DijkstraPathFinderTests
       [new(2, 2), new(6, 6),  new(7, 7)],
     };
 
-    Assert.ThrowsException<ArgumentOutOfRangeException>(() => DijkstrasPathFinder.Solve(graph, 9, 0));
+    Assert.Throws<ArgumentOutOfRangeException>(() => DijkstrasPathFinder.Solve(graph, 9, 0));
   }
 }

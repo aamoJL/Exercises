@@ -23,7 +23,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
     var expected = new int[] { 0, 3, 2 };
     var actual = WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, 0, 2);
 
-    CollectionAssert.AreEqual(expected, actual);
+    Assert.AreSequenceEqual(expected, actual);
   }
 
   [TestMethod]
@@ -44,7 +44,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
     var expected = Array.Empty<int>();
     var actual = WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, 0, 4);
 
-    CollectionAssert.AreEqual(expected, actual);
+    Assert.AreSequenceEqual(expected, actual);
   }
 
   [TestMethod]
@@ -65,7 +65,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
     var expected = Array.Empty<int>();
     var actual = WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, 1, 3);
 
-    CollectionAssert.AreEqual(expected, actual);
+    Assert.AreSequenceEqual(expected, actual);
   }
 
   [TestMethod]
@@ -83,7 +83,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
     };
 
     // 4 -> 0
-    Assert.ThrowsException<ArgumentOutOfRangeException>(
+    Assert.Throws<ArgumentOutOfRangeException>(
       () => WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, graph.Length, 0));
   }
 
@@ -102,7 +102,7 @@ public class WeightedAdjacencyMatrixBreadthFirstSearchTests
     };
 
     // -1 -> 0
-    Assert.ThrowsException<ArgumentOutOfRangeException>(
+    Assert.Throws<ArgumentOutOfRangeException>(
       () => WeightedAdjacencyMatrixBreadthFirstSearch.GetPath(graph, -1, 0));
   }
 }

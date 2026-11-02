@@ -13,7 +13,7 @@ public class MinHeapTests
     heap.Insert(2);
 
     Assert.AreEqual(1, heap.Count);
-    CollectionAssert.AreEqual(new int[] { 2 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 2 }, heap.ToArray());
   }
 
   [TestMethod]
@@ -24,7 +24,7 @@ public class MinHeapTests
     heap.Insert(2);
 
     Assert.AreEqual(2, heap.Count);
-    CollectionAssert.AreEqual(new int[] { 1, 2 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 1, 2 }, heap.ToArray());
   }
 
   [TestMethod]
@@ -35,7 +35,7 @@ public class MinHeapTests
     // The next incomplete parent is 19
     heap.Insert(20);
 
-    CollectionAssert.AreEqual(new int[] { 1, 2, 3, 17, 19, 36, 7, 25, 100, 20 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 1, 2, 3, 17, 19, 36, 7, 25, 100, 20 }, heap.ToArray());
   }
 
   [TestMethod]
@@ -46,7 +46,7 @@ public class MinHeapTests
     // The next incomplete parent is 19
     heap.Insert(15);
 
-    CollectionAssert.AreEqual(new int[] { 1, 2, 3, 17, 15, 36, 7, 25, 100, 19 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 1, 2, 3, 17, 15, 36, 7, 25, 100, 19 }, heap.ToArray());
   }
 
   [TestMethod]
@@ -57,7 +57,7 @@ public class MinHeapTests
     // The next incomplete parent is 19
     heap.Insert(0);
 
-    CollectionAssert.AreEqual(new int[] { 0, 1, 3, 17, 2, 36, 7, 25, 100, 19 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 0, 1, 3, 17, 2, 36, 7, 25, 100, 19 }, heap.ToArray());
   }
 
   [TestMethod]
@@ -66,7 +66,7 @@ public class MinHeapTests
     var array = new int[] { 1, 2, 3, 17, 19, 36, 7, 25, 100 };
     var heap = new MinHeap<int>(array);
 
-    CollectionAssert.AreEqual(array, heap.ToArray());
+    Assert.AreSequenceEqual(array, heap.ToArray());
   }
 
   [TestMethod]
@@ -74,7 +74,7 @@ public class MinHeapTests
   {
     var heap = new MinHeap<int>();
 
-    Assert.ThrowsException<InvalidOperationException>(() => heap.Remove());
+    Assert.Throws<InvalidOperationException>(() => heap.Remove());
   }
 
   [TestMethod]
@@ -104,6 +104,6 @@ public class MinHeapTests
 
     heap.Remove();
 
-    CollectionAssert.AreEqual(new int[] { 2, 17, 3, 25, 19, 36, 7, 100 }, heap.ToArray());
+    Assert.AreSequenceEqual(new int[] { 2, 17, 3, 25, 19, 36, 7, 100 }, heap.ToArray());
   }
 }

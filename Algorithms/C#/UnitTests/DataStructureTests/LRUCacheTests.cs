@@ -21,7 +21,7 @@ public class LRUCacheTests
     var cache = new LRUCache<string, int>(items);
 
     Assert.AreEqual(items.Length, cache.Count);
-    CollectionAssert.AreEqual(values, cache.ToArray());
+    Assert.AreSequenceEqual(values, cache.ToArray());
 
     foreach (var (Key, Value) in items)
       Assert.IsTrue(cache.Exists(Key));
@@ -39,7 +39,7 @@ public class LRUCacheTests
 
     var expected = new int[] { item.Value };
 
-    CollectionAssert.AreEquivalent(expected, cache.ToArray());
+    Assert.AreSequenceEqual(expected, cache.ToArray());
     Assert.IsTrue(cache.Exists(item.Key));
   }
 
@@ -58,7 +58,7 @@ public class LRUCacheTests
 
     var expected = new int[] { 6, 1, 2, 3, 4 };
 
-    CollectionAssert.AreEqual(expected, cache.ToArray());
+    Assert.AreSequenceEqual(expected, cache.ToArray());
     Assert.IsFalse(cache.Exists(items.Last().Key));
   }
 
@@ -76,7 +76,7 @@ public class LRUCacheTests
     var expected = new int[] { 6, 1, 2, 3, 5 };
 
     Assert.AreEqual(items.Length, cache.Count);
-    CollectionAssert.AreEquivalent(expected, cache.ToArray());
+    Assert.AreSequenceEqual(expected, cache.ToArray());
     Assert.IsTrue(cache.Exists(Key));
   }
 
@@ -90,7 +90,7 @@ public class LRUCacheTests
     var result = cache.Get(string.Empty, out var _);
 
     Assert.IsFalse(result);
-    CollectionAssert.AreEqual(values, cache.ToArray());
+    Assert.AreSequenceEqual(values, cache.ToArray());
 
     foreach (var (Key, Value) in items)
       Assert.IsTrue(cache.Exists(Key));
@@ -123,7 +123,7 @@ public class LRUCacheTests
     cache.Get(items[index].Key, out var _);
 
     var expected = new int[] { 4, 1, 2, 3, 5 };
-    CollectionAssert.AreEqual(expected, cache.ToArray());
+    Assert.AreSequenceEqual(expected, cache.ToArray());
 
     foreach (var (Key, Value) in items)
       Assert.IsTrue(cache.Exists(Key));

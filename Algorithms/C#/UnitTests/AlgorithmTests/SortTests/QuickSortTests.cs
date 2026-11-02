@@ -13,7 +13,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -24,7 +24,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -35,7 +35,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -46,7 +46,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -57,7 +57,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -68,7 +68,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
@@ -79,7 +79,7 @@ public class QuickSortTests
 
     QuickSort.Sort(array);
 
-    CollectionAssert.AreEqual(expected, array);
+    Assert.AreSequenceEqual(expected, array);
   }
 
   [TestMethod]
